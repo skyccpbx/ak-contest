@@ -1,7 +1,7 @@
 const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '' : '',
+    //publicPath: process.env.NODE_ENV === 'production' ? './' : './',
     transpileDependencies: ['vuetify'],
     productionSourceMap: false,
     lintOnSave: false,
@@ -43,4 +43,16 @@ module.exports = {
             })
             .end()
     },
+    // devServer: {
+    //     proxy: {
+    //         '/api': {
+    //             target: 'https://rescdn.imtxwy.com/lifeafter/data/voteitems.json', // 源地址
+    //             ws: true, // 如果要代理websockets
+    //             changeOrigin: true, // 改变源
+    //             pathRewrite: {
+    //                 '^/api': '', // 路径重写
+    //             },
+    //         },
+    //     },
+    // },
 }

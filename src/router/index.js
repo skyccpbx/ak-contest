@@ -17,6 +17,12 @@ const routes = [
         meta: { isNav: true },
     },
     {
+        path: '/cosplay/vote',
+        name: 'Vote',
+        component: () => import(/* webpackChunkName: "Vote" */ '@/views/Vote.vue'),
+        meta: { isNav: true, title: '作品展示' },
+    },
+    {
         path: '/illustration',
         name: 'Illustration',
         component: () => import(/* webpackChunkName: "Illustration" */ '@/views/Illustration.vue'),
@@ -28,6 +34,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "Works" */ '@/views/Works.vue'),
         meta: { isNav: true },
     },
+    {
+        path: '/vote/:id',
+        name: 'Item',
+        component: () => import(/* webpackChunkName: "Item" */ '@/views/Item.vue'),
+        meta: { isNav: true },
+        // params: {
+        //     VoteItems: [],
+        //     index: '2',
+        // },
+    },
 ]
 
 const router = new VueRouter({
@@ -36,7 +52,7 @@ const router = new VueRouter({
     routes,
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
-            return savedPosition
+            return { x: 0, y: 0 } //savedPosition
         } else {
             return { x: 0, y: 0 }
         }

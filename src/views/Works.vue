@@ -17,7 +17,7 @@ import TopNavM from '@/components/TopNavM'
 import ShareBtn from '@/components/ShareBtn'
 
 export default {
-    name: 'Home',
+    name: 'Works',
     components: {
         TopNavM,
         ShareBtn,

@@ -1,7 +1,7 @@
 <template>
     <v-app-bar app dark>
         <v-container class="d-flex align-center">
-            <a @click="$router.back(-1)"><v-img alt="Logo" class="shrink mr-2" contain src="../assets/images/top-logo.png" transition="scale-transition" width="101" /></a>
+            <a @click="$router.push('/')"><v-img alt="Logo" class="shrink mr-2" contain src="../assets/images/top-logo.png" transition="scale-transition" width="101" /></a>
             <v-spacer></v-spacer>
             <v-menu class="top-menu" offset-y open-on-hover transition="scroll-y-transition">
                 <template v-slot:activator="{ on, attrs }">

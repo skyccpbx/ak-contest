@@ -1,5 +1,5 @@
 <template>
-    <div class="conta">
+    <div class="contag">
         <TopNavM class="top-navm" />
         <v-main class="about-container">
             <header class="top-banner">
@@ -246,10 +246,10 @@ export default {
         message: '參賽者名稱或暱稱 ● 作品於Facebook個人動態(或管理之粉絲團)公開分享的貼文連結 ● Coser名稱 ● 攝影名稱 ● 後製名稱 ● 其他補充',
     }),
     methods: {
-        onCopy(e) {
+        onCopy() {
             this.snackbar = true
         },
-        onError(e) {
+        onError() {
             ;(this.snackbar = true), (this.text = '內文複製失败，請手動復制！')
         },
     },
