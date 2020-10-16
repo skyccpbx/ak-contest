@@ -10,14 +10,14 @@
                     <v-container class="pa-0">
                         <v-row>
                             <v-col class="pb-4" cols="12">
-                                <v-form ref="form" v-model="valid" lazy-validation><v-text-field v-model="email" :rules="emailRules" label="請輸入您的EMAIL" required></v-text-field></v-form>
+                                <v-form ref="formDate" v-model="valid" lazy-validation><v-text-field v-model="email" :rules="emailRules" label="請輸入您的EMAIL" required></v-text-field></v-form>
                             </v-col>
                         </v-row>
                     </v-container>
                     <p class="mb-3 gr-zl">※個人資料僅作為本活動聯繫依據</p>
                 </v-card-text>
                 <v-card-actions class="text-center justify-center pb-5">
-                    <v-btn color="#fff" text @click="dialog = false"><img src="../assets/images/ok-btn.png" /></v-btn>
+                    <v-btn color="#fff" text @click="validate"><img src="../assets/images/ok-btn.png" /></v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -39,8 +39,11 @@ export default {
                 this.dialog = true
             }, 550)
         },
+        validate() {
+            this.$refs.formDate.validate()
+        },
         reset() {
-            this.$refs.form.reset()
+            this.$refs.formDate.reset()
         },
     },
 }
