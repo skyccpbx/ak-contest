@@ -55,7 +55,7 @@
                         <h1><img src="../assets/images/vote-tit01.png" /></h1>
 
                         <div class="d-flex justify-end align-center searchfield">
-                            <p class="mr-12 mt-3 mb-0" color="#0049dd">Cosplay-競賽組當前剩餘票數：8</p>
+                            <p class="mr-12 mt-3 mb-0 ml-0" color="#0049dd">Cosplay-競賽組當前剩餘票數：8</p>
                             <v-text-field type="text" flat solo-inverted hide-details prepend-inner-icon="mdi-magnify" label="輸入檢索編號" class="mt-2" v-model="keyWord" @keyup.enter="SearchBtn()"></v-text-field>
                             <v-btn class="mt-2" elevation="2" text @click="SearchBtn()"><img src="../assets/images/search-ico.png" /></v-btn>
                             <v-snackbar class="mt-16 d-flex align-center justify-center" v-model="snackbar" multi-line timeout="3000" color="#0049dd">
@@ -73,10 +73,10 @@
                         </div>
                     </v-flex>
                     <v-row class="mb-6 vote-item">
-                        <v-col class="col-lg-3 col-md-4 col-6" v-for="(item, index) in VoteItems" :key="index">
+                        <v-col class="col-lg-3 col-md-4 col-6 transition-swing" v-for="(item, index) in VoteItems" :key="index">
                             <v-card class="mx-auto" max-width="344">
                                 <span class="item-num">NO: {{ VoteItems[index].Id }}</span>
-                                <router-link :to="`/vote/${VoteItems[index].Id}`" @click="selectItem(item)"><v-img :src="`${VoteItems[index].ThumImg}`" height="200" /></router-link>
+                                <router-link :to="`/vote/${VoteItems[index].Id}`"><v-img :src="`${VoteItems[index].ThumImg}`" height="200" /></router-link>
                                 <div class="card-bg">
                                     <v-card-title>
                                         <span class="d-inline-block text-truncate">{{ VoteItems[index].Title }}</span>
@@ -106,6 +106,7 @@
 
                     <ShareBtn />
                 </v-row>
+                <Dialogs ref="Dialogs" class="dialogs-components" />
             </v-container>
         </v-main>
     </div>
@@ -114,6 +115,7 @@
 <script>
 import TopNavM from '@/components/TopNavM'
 import ShareBtn from '@/components/ShareBtn'
+import Dialogs from '@/components/Dialogs'
 import { api } from '@/request/api'
 
 export default {
@@ -121,6 +123,7 @@ export default {
     components: {
         TopNavM,
         ShareBtn,
+        Dialogs,
     },
     data: () => ({
         VoteItems: [], //当前页显示内容
@@ -136,6 +139,7 @@ export default {
         searchList: [],
         snackbar: false,
         text: '搜索不到該作品，請輸入正確的編號!',
+        dialog: 'false',
     }),
     created() {
         for (let i = 0; i < 99; i++) {
@@ -169,7 +173,7 @@ export default {
         nextPage() {
             setTimeout(() => {
                 this.pageSize += 2
-                console.log(this.totalPage)
+                //console.log(this.totalPage)
                 if (this.pageSize > this.VoteLength.length) {
                     this.loading = false
                     return
@@ -190,11 +194,7 @@ export default {
         Start(id) {
             console.log(id)
             this.counter += 1
-        },
-        selectItem(item) {
-            //console.log(item.moveId);
-            //var item = item.moveId;
-            this.$emit('select', item)
+            this.$refs.Dialogs.OpenDialog()
         },
     },
 }
@@ -334,10 +334,24 @@ input:-webkit-autofill {
             background-color: #383838 !important;
             font-size: 16px;
             position: relative;
-            top: -10px;
+            top: -6px;
             right: 3px;
             .v-icon {
                 font-size: 20px;
+            }
+        }
+    }
+}
+@media (max-width: 1280px) {
+    .about-container {
+        .vote-item {
+            .card-bg {
+                .v-card__title span {
+                    max-width: 170px;
+                }
+            }
+            .like-btn {
+                font-size: 14px;
             }
         }
     }
