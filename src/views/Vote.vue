@@ -90,7 +90,7 @@
                                         <v-spacer></v-spacer>
 
                                         <vue-star class="px-3 like-btn elevation-24" animate="animate__animated animate__bounceIn" color="#ff3b3b">
-                                            <v-btn class="v-btn v-btn--flat star-btn" slot="icon" @click="Start(VoteItems[index].Id)">
+                                            <v-btn class="v-btn v-btn--flat star-btn" slot="icon" @click.once="Start(VoteItems[index].Id)">
                                                 <v-icon text left class="mr-2">mdi-thumb-up</v-icon>
                                                 Like
                                             </v-btn>
