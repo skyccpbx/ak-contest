@@ -189,7 +189,7 @@ export default {
                 //alert('搜索不到該作品，請輸入正確的編號!')
                 return
             }
-            this.$router.push({ path: '/vote/' + id })
+            this.$router.push({ path: `${/vote/}${id}` })
         },
         Start(id) {
             console.log(id)
