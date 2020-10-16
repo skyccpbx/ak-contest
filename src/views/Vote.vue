@@ -89,10 +89,12 @@
 
                                         <v-spacer></v-spacer>
 
-                                        <v-btn left class="px-3 like-btn elevation-24" @click="Start(item.Id)">
-                                            <v-icon class="mr-1">mdi-thumb-up</v-icon>
-                                            Like
-                                        </v-btn>
+                                        <vue-star class="px-3 like-btn elevation-24" animate="animate__animated animate__bounceIn" color="#ff3b3b">
+                                            <v-btn class="v-btn v-btn--flat star-btn" slot="icon" @click="Start(VoteItems[index].Id)">
+                                                <v-icon text left class="mr-2">mdi-thumb-up</v-icon>
+                                                Like
+                                            </v-btn>
+                                        </vue-star>
                                     </v-card-actions>
                                 </div>
                             </v-card>
@@ -117,6 +119,8 @@ import TopNavM from '@/components/TopNavM'
 import ShareBtn from '@/components/ShareBtn'
 import Dialogs from '@/components/Dialogs'
 import { api } from '@/request/api'
+import VueStar from 'vue-star'
+import 'animate.css'
 
 export default {
     name: 'Vote',
@@ -124,6 +128,7 @@ export default {
         TopNavM,
         ShareBtn,
         Dialogs,
+        VueStar,
     },
     data: () => ({
         VoteItems: [], //当前页显示内容
@@ -203,6 +208,22 @@ export default {
 <style lang="scss">
 input:-webkit-autofill {
     box-shadow: 0 0 0px 1000px white inset !important;
+}
+.VueStar__icon {
+    width: 100%;
+    z-index: 100;
+}
+
+.VueStar__icon div {
+    padding: 4px 14px;
+}
+.VueStar__ground {
+    width: auto;
+    height: auto;
+}
+.VueStar__decoration {
+    margin-top: -33px;
+    margin-left: -28px;
 }
 .about-container {
     position: relative;
@@ -316,6 +337,10 @@ input:-webkit-autofill {
                 }
             }
         }
+        .star-btn {
+            box-shadow: inherit !important;
+            color: inherit !important;
+        }
         .v-image {
             margin: 5px;
         }
@@ -331,11 +356,13 @@ input:-webkit-autofill {
         .like-btn {
             border: 1px solid #fff;
             border-radius: 0;
-            background-color: #383838 !important;
+            background-color: #04040475 !important;
             font-size: 16px;
             position: relative;
             top: -6px;
             right: 3px;
+            cursor: pointer;
+            padding: 0 !important;
             .v-icon {
                 font-size: 20px;
             }

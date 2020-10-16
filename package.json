@@ -8,12 +8,14 @@
         "dev": "vue-cli-service serve --open"
     },
     "dependencies": {
+        "animate.css": "^4.1.1",
         "axios": "^0.20.0",
         "core-js": "^3.6.5",
         "qs": "^6.9.4",
         "vue": "^2.6.11",
         "vue-clipboard2": "^0.3.1",
         "vue-router": "^3.4.6",
+        "vue-star": "0.0.4",
         "vuetify": "^2.3.13"
     },
     "devDependencies": {
