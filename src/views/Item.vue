@@ -20,7 +20,10 @@
                                             <span>NO:{{ VoteItems.Id }}</span>
                                         </h3>
                                         <h2 class="my-5">{{ VoteItems.Title }}</h2>
-                                        <p class="mb-10">{{ VoteItems.Author }} 登入就送十連抽，還有五星強力幹員等你來拿！登入就送十連抽，還有五星強力幹員等你來拿！</p>
+                                        <p class="mb-10">
+                                            {{ VoteItems.Author }}
+                                            登入就送十連抽，還有五星強力幹員等你來拿！登入就送十連抽，還有五星強力幹員等你來拿！
+                                        </p>
                                         <v-flex align-center justify-center class="d-flex heart">
                                             <v-icon left color="red">mdi-cards-heart</v-icon>
                                             當前票數：{{ counter }}{{ model }}

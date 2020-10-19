@@ -55,7 +55,9 @@
                         <h1><img src="../assets/images/vote-tit01.png" /></h1>
 
                         <div class="d-flex justify-end align-center searchfield">
-                            <p class="mr-12 mt-3 mb-0 ml-0" color="#0049dd">Cosplay-競賽組當前剩餘票數：8</p>
+                            <p class="mr-12 mt-3 mb-0 ml-0" color="#0049dd">
+                                Cosplay-競賽組當前剩餘票數：8
+                            </p>
                             <v-text-field type="text" flat solo-inverted hide-details prepend-inner-icon="mdi-magnify" label="輸入檢索編號" class="mt-2" v-model="keyWord" @keyup.enter="SearchBtn()"></v-text-field>
                             <v-btn class="mt-2" elevation="2" text @click="SearchBtn()"><img src="../assets/images/search-ico.png" /></v-btn>
                             <v-snackbar class="mt-16 d-flex align-center justify-center" v-model="snackbar" multi-line timeout="3000" color="#0049dd">
@@ -186,7 +188,7 @@ export default {
                 this.getVoteItems()
             }, 600)
         },
-        SearchBtn(e) {
+        SearchBtn() {
             var id = this.keyWord
             id = parseInt(id)
             if (isNaN(id) || id < 1 || id > this.VoteLength.length) {
