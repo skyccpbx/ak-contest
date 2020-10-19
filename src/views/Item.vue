@@ -13,7 +13,7 @@
                         <v-expand-transition>
                             <v-sheet v-if="model != null">
                                 <v-row class="fill-height ma-5 align-start group-img" align="center">
-                                    <v-img :src="`${VoteItems.LargeImg}`" contain height="520" max-width="1000px" />
+                                    <v-img :src="`${VoteItems.ImgList[0].LargeImg[0]}`" contain height="520" max-width="1000px" />
                                     <div class="text-wrap">
                                         <h3>
                                             作品編號
@@ -43,7 +43,7 @@
                                 <v-card class="ma-3 mx-5" max-width="181px" @click="toggle">
                                     <v-row class="fill-height" align="center" justify="center">
                                         <v-scale-transition>
-                                            <img :src="`${VoteItems.ThumImg}`" height="130" />
+                                            <img :src="`${VoteItems.ImgList[0].ThumImg[0]}`" height="130" />
                                         </v-scale-transition>
                                     </v-row>
                                 </v-card>
@@ -80,7 +80,8 @@ export default {
         async getVoteItems() {
             let { data } = await api.get('/voteitems.json')
             var voteId = this.$route.params.id
-            this.VoteItems = data[voteId - 1]
+            const GroupData = data.filter(item => item.GroupId == 'cosplay')
+            this.VoteItems = GroupData[voteId - 1]
             // console.log(voteId)
             // console.log(this.VoteItems)
         },
