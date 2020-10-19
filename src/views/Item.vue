@@ -12,8 +12,8 @@
                     <v-sheet class="mx-auto large-bg" elevation="8" max-width="1360" width="100%">
                         <v-expand-transition>
                             <v-sheet v-if="model != null">
-                                <v-row class="fill-height ma-5 align-start" align="center">
-                                    <v-img :src="`${VoteItems.ThumImg}`" height="520" max-width="1000px" />
+                                <v-row class="fill-height ma-5 align-start group-img" align="center">
+                                    <v-img :src="`${VoteItems.LargeImg}`" contain height="520" max-width="1000px" />
                                     <div class="text-wrap">
                                         <h3>
                                             作品編號
@@ -38,7 +38,7 @@
                                 </v-row>
                             </v-sheet>
                         </v-expand-transition>
-                        <v-slide-group v-model="model" class="pa-4" show-arrows mandatory>
+                        <v-slide-group v-model="model" class="pa-4" center show-arrows mandatory>
                             <v-slide-item v-for="n in 6" :key="n" v-slot:default="{ toggle }">
                                 <v-card class="ma-3 mx-5" max-width="181px" @click="toggle">
                                     <v-row class="fill-height" align="center" justify="center">
@@ -131,6 +131,10 @@ body {
                 object-fit: cover;
                 border: 1px solid #fff;
             }
+        }
+        .v-slide-group__content {
+            justify-content: center;
+            justify-items: center;
         }
         .v-responsive__content {
             width: 100% !important;

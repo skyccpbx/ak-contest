@@ -78,7 +78,7 @@
                         <v-col class="col-lg-3 col-md-4 col-6 transition-swing" v-for="(item, index) in VoteItems" :key="index">
                             <v-card class="mx-auto" max-width="344">
                                 <span class="item-num">NO: {{ VoteItems[index].Id }}</span>
-                                <router-link :to="`/vote/${VoteItems[index].Id}`"><v-img :src="`${VoteItems[index].ThumImg}`" height="200" /></router-link>
+                                <router-link :to="`/vote/${VoteItems[index].Id}`"><v-img :src="`${VoteItems[index].ImgList[0].ThumImg[0]}`" height="200" /></router-link>
                                 <div class="card-bg">
                                     <v-card-title>
                                         <span class="d-inline-block text-truncate">{{ VoteItems[index].Title }}</span>
@@ -167,14 +167,14 @@ export default {
     },
     methods: {
         async getVoteItems() {
-            let { data } = await api.get('/voteitems.json')
-
+            const { data } = await api.get('/voteitems.json')
             const begin = (this.currentPage - 1) * this.pageSize
             const end = this.currentPage * this.pageSize
-            this.VoteItems = data.slice(begin, end)
+            const GroupData = data.filter(item => item.GroupId == 'cosplay')
+            this.VoteItems = GroupData.slice(begin, end)
 
-            this.VoteLength = data
-            //console.log(this.VoteLength)
+            this.VoteLength = GroupData
+            console.log(this.VoteLength)
         },
         // 下一页
         nextPage() {
