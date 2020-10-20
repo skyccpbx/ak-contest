@@ -18,9 +18,24 @@
                     </v-list-item>
                 </v-list>
             </v-menu>
-            <v-btn router-link to="/works" class="mr-10" text>
-                作品票選
-            </v-btn>
+            <v-menu class="top-menu" offset-y open-on-hover transition="scroll-y-transition">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn class="mr-10" text v-bind="attrs" v-on="on">
+                        活動辦法
+                    </v-btn>
+                </template>
+                <v-list class="top-bar-list">
+                    <v-list-item router-link to="/cosplay/vote">
+                        <span>Cosplay-競賽組</span>
+                    </v-list-item>
+                    <v-list-item router-link to="/illustration/vote">
+                        <span>插畫-競賽組</span>
+                    </v-list-item>
+                    <v-list-item router-link to="/amateur/vote">
+                        <span>綜合同好組</span>
+                    </v-list-item>
+                </v-list>
+            </v-menu>
             <v-btn text>
                 <a class="white--text text-decoration-none" href="https://ak.txwy.tw/" target="_blank">
                     回到官網

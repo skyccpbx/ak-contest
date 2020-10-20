@@ -5,145 +5,121 @@
             "Id": 1,
             "Title": "57&FAL",
             "Author": "Idrikoseal",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr001-full.jpg"]
+            }
         },
         {
             "GroupId": "cosplay",
             "Id": 2,
             "Title": "PKPKP",
             "Author": "沈昱廷",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002-full.jpg"]
+            }
         },
         {
             "GroupId": "cosplay",
             "Id": 3,
             "Title": "請幫Spectre M4加星",
             "Author": "泡麵+蛋",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr003.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr003-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr003-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr003-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr003.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr003-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr003-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr003-full.jpg"]
+            }
         },
         {
             "GroupId": "cosplay",
             "Id": 4,
             "Title": "pkp＆g36",
             "Author": "張晧哲",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr004.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr004-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr004-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr004-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr004.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr002.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr004-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr004-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr004-full.jpg"]
+            }
         },
 
         {
-            "GroupId": "doujin",
+            "GroupId": "illustration",
             "Id": 1,
             "Title": "永遠的404&一周年聖誕賀圖",
             "Author": "神楓御紫",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr005-full.jpg"]
+            }
         },
         {
-            "GroupId": "doujin",
+            "GroupId": "illustration",
             "Id": 2,
             "Title": "愉快的交換禮物",
             "Author": "Idrikoseal",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr006-full.jpg"]
+            }
         },
         {
-            "GroupId": "doujin",
+            "GroupId": "illustration",
             "Id": 3,
             "Title": "SVD誓約",
             "Author": "陳于軒",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr007-full.jpg"]
+            }
         },
         {
-            "GroupId": "doujin",
+            "GroupId": "illustration",
             "Id": 4,
             "Title": "PPK",
             "Author": "雯子",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr008-full.jpg"]
+            }
         },
         {
             "GroupId": "amateur",
             "Id": 1,
             "Title": "M16A1的犧牲",
             "Author": "陳聖文",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr009-full.jpg"]
+            }
         },
         {
             "GroupId": "amateur",
             "Id": 2,
             "Title": "MG4與MG4",
             "Author": "搭碰",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr010-full.jpg"]
+            }
         },
         {
             "GroupId": "amateur",
             "Id": 3,
             "Title": "SV-98",
             "Author": "LianJin",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr011-full.jpg"]
+            }
         },
         {
             "GroupId": "amateur",
             "Id": 4,
             "Title": "AR15",
             "Author": "朱斯特",
-            "ImgList": [
-                {
-                    "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012.jpg"],
-                    "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012-full.jpg"]
-                }
-            ]
+            "ImgList": {
+                "ThumImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012.jpg"],
+                "LargeImg": ["https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012-full.jpg", "https://twcdn.imtxwy.com/tw/gf/illustration/js/cr012-full.jpg"]
+            }
         }
     ]
 }

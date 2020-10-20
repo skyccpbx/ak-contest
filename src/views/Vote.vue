@@ -78,7 +78,7 @@
                         <v-col class="col-lg-3 col-md-4 col-6 transition-swing" v-for="(item, index) in VoteItems" :key="index">
                             <v-card class="mx-auto" max-width="344">
                                 <span class="item-num">NO: {{ VoteItems[index].Id }}</span>
-                                <router-link :to="`/vote/${VoteItems[index].Id}`"><v-img :src="`${VoteItems[index].ImgList[0].ThumImg[0]}`" height="200" /></router-link>
+                                <router-link :to="`/vote/${VoteItems[index].Id}`"><v-img :src="VoteItems[index].ImgList.ThumImg[0]" height="200" /></router-link>
                                 <div class="card-bg">
                                     <v-card-title>
                                         <span class="d-inline-block text-truncate">{{ VoteItems[index].Title }}</span>
@@ -159,22 +159,29 @@ export default {
 
         // 计算得0时设置为1
         this.totalPage = this.totalPage == 0 ? 1 : this.totalPage
-        this.getVoteItems()
-    },
-    mounted() {
+
         // 添加滚动事件，检测滚动到页面底部
         window.addEventListener('scroll', this.nextPage)
+    },
+    mounted() {
+        this.router_group()
+        this.getVoteItems()
     },
     methods: {
         async getVoteItems() {
             const { data } = await api.get('/voteitems.json')
             const begin = (this.currentPage - 1) * this.pageSize
             const end = this.currentPage * this.pageSize
-            const GroupData = data.filter(item => item.GroupId == 'cosplay')
+            const GroupData = data.filter(item => item.GroupId == this.router_groupID)
+            console.log(this.router_groupID)
+
             this.VoteItems = GroupData.slice(begin, end)
 
             this.VoteLength = GroupData
             console.log(this.VoteLength)
+        },
+        router_group() {
+            this.router_groupID = this.$route.params.GroupID
         },
         // 下一页
         nextPage() {
@@ -193,7 +200,6 @@ export default {
             id = parseInt(id)
             if (isNaN(id) || id < 1 || id > this.VoteLength.length) {
                 this.snackbar = true
-                //alert('搜索不到該作品，請輸入正確的編號!')
                 return
             }
             this.$router.push({ path: `${/vote/}${id}` })
