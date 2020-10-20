@@ -35,7 +35,7 @@
                     </li>
                 </v-breadcrumbs>
             </div>
-            <v-container class="mm-6">
+            <v-container class="my-0">
                 <v-row class="flex-column" justify="center">
                     <p class="my-8">
                         2020/12/25-2021/1/10投票期間，每個FB帳號
@@ -52,7 +52,7 @@
                         <br />
                     </p>
                     <v-flex class="search-box d-flex justify-space-between align-start">
-                        <h1><img src="../assets/images/vote-tit01.png" /></h1>
+                        <h1 @click="router_group()"><img src="../assets/images/vote-tit01.png" /></h1>
 
                         <div class="d-flex justify-end align-center searchfield">
                             <p class="mr-12 mt-3 mb-0 ml-0" color="#0049dd">
@@ -76,7 +76,7 @@
                     </v-flex>
                     <v-row class="mb-6 vote-item">
                         <v-col class="col-lg-3 col-md-4 col-6 transition-swing" v-for="(item, index) in VoteItems" :key="index">
-                            <v-card class="mx-auto" max-width="344">
+                            <v-card class="mx-auto" max-width="344" v-if="VoteItems[index].ImgList">
                                 <span class="item-num">NO: {{ VoteItems[index].Id }}</span>
                                 <router-link :to="`/vote/${VoteItems[index].Id}`"><v-img :src="VoteItems[index].ImgList.ThumImg[0]" height="200" /></router-link>
                                 <div class="card-bg">
@@ -156,17 +156,16 @@ export default {
         }
         // 计算一共有几页
         this.totalPage = Math.ceil(this.VoteItems.length / this.pageSize)
-
         // 计算得0时设置为1
         this.totalPage = this.totalPage == 0 ? 1 : this.totalPage
-
+        // 获取router_groupId
+        this.router_group()
+        // 获取json数据
+        this.getVoteItems()
         // 添加滚动事件，检测滚动到页面底部
         window.addEventListener('scroll', this.nextPage)
     },
-    mounted() {
-        this.router_group()
-        this.getVoteItems()
-    },
+
     methods: {
         async getVoteItems() {
             const { data } = await api.get('/voteitems.json')
@@ -176,12 +175,12 @@ export default {
             console.log(this.router_groupID)
 
             this.VoteItems = GroupData.slice(begin, end)
-
             this.VoteLength = GroupData
-            console.log(this.VoteLength)
+            //console.log(this.VoteLength)
         },
         router_group() {
             this.router_groupID = this.$route.params.GroupID
+            //this.router_groupID = 'cosplay'
         },
         // 下一页
         nextPage() {

@@ -13,7 +13,7 @@
                         <v-expand-transition>
                             <v-sheet v-if="model != null">
                                 <v-row class="fill-height ma-5 align-start group-img" align="center">
-                                    <v-img :src="VoteItems.ImgList.LargeImg[0]" contain height="520" max-width="1000px" />
+                                    <v-img :src="imgSrc" class="transition-swing" contain height="520" max-width="1000px" />
                                     <div class="text-wrap">
                                         <h3>
                                             作品編號
@@ -38,12 +38,12 @@
                                 </v-row>
                             </v-sheet>
                         </v-expand-transition>
-                        <v-slide-group v-model="model" class="pa-4" center show-arrows mandatory>
-                            <v-slide-item v-for="n in 6" :key="n" v-slot:default="{ toggle }">
+                        <v-slide-group v-model="model" class="pa-4" center show-arrows mandatory v-if="VoteItems.ImgList">
+                            <v-slide-item v-for="(item, index) in VoteItems.ImgList.ThumImg.length" :key="index" v-slot:default="{ toggle }">
                                 <v-card class="ma-3 mx-5" max-width="181px" @click="toggle">
                                     <v-row class="fill-height" align="center" justify="center">
                                         <v-scale-transition>
-                                            <img :src="VoteItems.ImgList.ThumImg[0]" height="130" />
+                                            <img :src="VoteItems.ImgList.ThumImg[index]" height="130" @click="getLargeImg(VoteItems.ImgList.LargeImg[index])" />
                                         </v-scale-transition>
                                     </v-row>
                                 </v-card>
@@ -72,6 +72,7 @@ export default {
         VoteItems: [], //当前页显示内容
         model: null,
         counter: 1000,
+        imgSrc: '',
     }),
     created() {
         this.getVoteItems()
@@ -82,11 +83,16 @@ export default {
             var voteId = this.$route.params.id
             const GroupData = data.filter(item => item.GroupId == 'cosplay')
             this.VoteItems = GroupData[voteId - 1]
-            // console.log(voteId)
+            this.imgSrc = this.VoteItems.ImgList.LargeImg[0]
+            console.log(this.imgSrc)
             // console.log(this.VoteItems)
         },
         Start() {
             this.counter += 1
+        },
+        getLargeImg(imgSrc) {
+            this.imgSrc = imgSrc
+            //console.log(imgSrc)
         },
     },
 }
@@ -100,6 +106,11 @@ body {
 }
 .high100 {
     min-height: 100%;
+}
+.group-img {
+    .v-image__image--contain {
+        transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+    }
 }
 .works-wrap {
     .top-navm {
