@@ -17,6 +17,12 @@ const routes = [
         meta: { isNav: true },
     },
     {
+        path: '/illustration',
+        name: 'Illustration',
+        component: () => import(/* webpackChunkName: "Illustration" */ '@/views/Illustration.vue'),
+        meta: { isNav: true },
+    },
+    {
         path: '/:GroupID/vote',
         name: 'Vote',
         component: () => import(/* webpackChunkName: "cosplayVote" */ '@/views/Vote.vue'),
@@ -24,18 +30,6 @@ const routes = [
         params: {
             GroupID: '',
         },
-    },
-    {
-        path: '/illustration',
-        name: 'Illustration',
-        component: () => import(/* webpackChunkName: "Illustration" */ '@/views/Illustration.vue'),
-        meta: { isNav: true },
-    },
-    {
-        path: '/works',
-        name: 'Works',
-        component: () => import(/* webpackChunkName: "Works" */ '@/views/Works.vue'),
-        meta: { isNav: true },
     },
     {
         path: '/:GroupID/vote/:id',
@@ -46,6 +40,12 @@ const routes = [
         //     VoteItems: [],
         //     index: '2',
         // },
+    },
+    {
+        path: '/works',
+        name: 'Works',
+        component: () => import(/* webpackChunkName: "Works" */ '@/views/Works.vue'),
+        meta: { isNav: true },
     },
 ]
 
