@@ -179,7 +179,6 @@ export default {
 
             this.VoteItems = GroupData.slice(begin, end)
             this.VoteLength = GroupData
-            //console.log(this.VoteLength)
         },
         router_group() {
             this.router_groupID = this.$route.params.GroupID
