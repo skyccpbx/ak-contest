@@ -56,7 +56,10 @@
 
                         <div class="d-flex justify-end align-center searchfield">
                             <p class="mr-12 mt-3 mb-0 ml-0" color="#0049dd">
-                                Cosplay-競賽組當前剩餘票數：8
+                                <span v-if="$route.params.GroupID === 'cosplay'">Cosplay</span>
+                                <span v-else-if="$route.params.GroupID === 'illustration'">插畫</span>
+                                <span v-else-if="$route.params.GroupID === 'amateur'">綜合同好組</span>
+                                -競賽組當前剩餘票數：8
                             </p>
                             <v-text-field type="text" flat solo-inverted hide-details prepend-inner-icon="mdi-magnify" label="輸入檢索編號" class="mt-2" v-model="keyWord" @keyup.enter="SearchBtn()"></v-text-field>
                             <v-btn class="mt-2" elevation="2" text @click="SearchBtn()"><img src="../assets/images/search-ico.png" /></v-btn>
@@ -78,7 +81,7 @@
                         <v-col class="col-lg-3 col-md-4 col-6 transition-swing" v-for="(item, index) in VoteItems" :key="index">
                             <v-card class="mx-auto" max-width="344" v-if="VoteItems[index].ImgList">
                                 <span class="item-num">NO: {{ VoteItems[index].Id }}</span>
-                                <router-link :to="`/vote/${VoteItems[index].Id}`"><v-img :src="VoteItems[index].ImgList.ThumImg[0]" height="200" /></router-link>
+                                <router-link :to="`/${$route.params.GroupID}/vote/${VoteItems[index].Id}`"><v-img :src="VoteItems[index].ImgList.ThumImg[0]" height="200" /></router-link>
                                 <div class="card-bg">
                                     <v-card-title>
                                         <span class="d-inline-block text-truncate">{{ VoteItems[index].Title }}</span>
@@ -201,7 +204,7 @@ export default {
                 this.snackbar = true
                 return
             }
-            this.$router.push({ path: `${/vote/}${id}` })
+            this.$router.push({ path: `/${this.$route.params.GroupID}/vote/${id}` })
         },
         Start(id) {
             console.log(id)

@@ -21,6 +21,7 @@
                                         </h3>
                                         <h2 class="my-5">{{ VoteItems.Title }}</h2>
                                         <p class="mb-10">
+                                            {{ $route.params.GroupID }}
                                             {{ VoteItems.Author }}
                                             登入就送十連抽，還有五星強力幹員等你來拿！登入就送十連抽，還有五星強力幹員等你來拿！
                                         </p>
@@ -81,7 +82,7 @@ export default {
         async getVoteItems() {
             let { data } = await api.get('/voteitems.json')
             var voteId = this.$route.params.id
-            const GroupData = data.filter(item => item.GroupId == 'cosplay')
+            const GroupData = data.filter(item => item.GroupId == this.$route.params.GroupID)
             this.VoteItems = GroupData[voteId - 1]
             this.imgSrc = this.VoteItems.ImgList.LargeImg[0]
             //console.log(this.imgSrc)

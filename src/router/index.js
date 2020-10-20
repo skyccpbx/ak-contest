@@ -22,7 +22,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "cosplayVote" */ '@/views/Vote.vue'),
         meta: { isNav: true, title: '作品展示' },
         params: {
-            GroupID: 'cosplay',
+            GroupID: '',
         },
     },
     {
@@ -38,7 +38,7 @@ const routes = [
         meta: { isNav: true },
     },
     {
-        path: '/vote/:id',
+        path: '/:GroupID/vote/:id',
         name: 'Item',
         component: () => import(/* webpackChunkName: "Item" */ '@/views/Item.vue'),
         meta: { isNav: true },
