@@ -84,8 +84,7 @@ export default {
             const GroupData = data.filter(item => item.GroupId == 'cosplay')
             this.VoteItems = GroupData[voteId - 1]
             this.imgSrc = this.VoteItems.ImgList.LargeImg[0]
-            console.log(this.imgSrc)
-            // console.log(this.VoteItems)
+            //console.log(this.imgSrc)
         },
         Start() {
             this.counter += 1
