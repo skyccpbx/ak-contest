@@ -39,7 +39,7 @@
                                 </v-row>
                             </v-sheet>
                         </v-expand-transition>
-                        <v-slide-group v-model="model" class="pa-4" center show-arrows mandatory v-if="VoteItems.ImgList">
+                        <v-slide-group v-model="model" class="pa-4" center show-arrows mandatory v-if="VoteItems.ImgList" v-show="VoteItems.ImgList.ThumImg.length > 1">
                             <v-slide-item v-for="(item, index) in VoteItems.ImgList.ThumImg.length" :key="index" v-slot:default="{ toggle }">
                                 <v-card class="ma-3 mx-5" max-width="181px" @click="toggle">
                                     <v-row class="fill-height" align="center" justify="center">
