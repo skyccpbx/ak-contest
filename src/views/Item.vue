@@ -27,7 +27,7 @@
                                         </p>
                                         <v-flex align-center justify-center class="d-flex heart">
                                             <v-icon left color="red">mdi-cards-heart</v-icon>
-                                            當前票數：{{ counter }}{{ model }}
+                                            當前票數：{{ counter }}
                                         </v-flex>
                                         <v-btn class="mt-6 mx-auto" text @click="Start"><img src="@/assets/images/tp-btn.png" /></v-btn>
                                         <v-flex align-center justify-center class="d-flex share-line mt-5 ">
