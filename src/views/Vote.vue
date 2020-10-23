@@ -63,11 +63,11 @@
                             </p>
                             <v-text-field type="text" flat solo-inverted hide-details prepend-inner-icon="mdi-magnify" label="輸入檢索編號" class="mt-2" v-model="keyWord" @keyup.enter="SearchBtn()"></v-text-field>
                             <v-btn class="mt-2" elevation="2" text @click="SearchBtn()"><img src="../assets/images/search-ico.png" /></v-btn>
-                            <v-snackbar class="mt-16 d-flex align-center justify-center" v-model="snackbar" multi-line timeout="3000" color="#0049dd">
-                                <span class="body-1">
-                                    <v-icon left>mdi-alert</v-icon>
-                                    {{ ErrText }}
-                                </span>
+                            <v-snackbar class="mt-16 d-flex align-center justify-center" v-model="snackbar" multi-line timeout="333000" color="#B71C1C">
+                                <div class="d-flex align-center justify-center">
+                                    <v-icon text>mdi-alert</v-icon>
+                                    <p class="ml-2 mb-0 mr-0">{{ ErrText }}</p>
+                                </div>
 
                                 <template v-slot:action="{ attrs }">
                                     <v-btn color="#fff" text v-bind="attrs" @click="snackbar = false">
@@ -224,7 +224,10 @@ input:-webkit-autofill {
     width: 100%;
     z-index: 100;
 }
-
+.v-snack__wrapper.theme--dark {
+    background-color: #333333;
+    color: rgba(255, 255, 255, 1);
+}
 .VueStar__icon div {
     padding: 4px 14px;
 }
@@ -395,6 +398,11 @@ input:-webkit-autofill {
     }
 }
 @media (max-width: 750px) {
+    .about-container .search-box .v-btn:not(.v-btn--round).v-size--default {
+        height: auto;
+        min-width: 45px;
+        padding: 0;
+    }
     .about-container {
         h1 img {
             zoom: 72%;
