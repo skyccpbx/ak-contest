@@ -66,7 +66,7 @@
                             <v-snackbar class="mt-16 d-flex align-center justify-center" v-model="snackbar" multi-line timeout="3000" color="#0049dd">
                                 <span class="body-1">
                                     <v-icon left>mdi-alert</v-icon>
-                                    {{ text }}
+                                    {{ ErrText }}
                                 </span>
 
                                 <template v-slot:action="{ attrs }">
@@ -148,7 +148,8 @@ export default {
         // 搜索后的展示数据
         searchList: [],
         snackbar: false,
-        text: '搜索不到該作品，請輸入正確的編號!',
+        // 错误提示
+        ErrText: '',
         dialog: 'false',
     }),
     created() {
@@ -200,6 +201,7 @@ export default {
             var id = this.keyWord
             id = parseInt(id)
             if (isNaN(id) || id < 1 || id > this.VoteLength.length) {
+                this.ErrText = '搜索不到該作品，請輸入正確的編號!'
                 this.snackbar = true
                 return
             }
