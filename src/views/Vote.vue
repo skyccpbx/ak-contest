@@ -16,7 +16,7 @@
                         <a @click="fbLogin()" class="fbLogin v-breadcrumbs__item" color="#1a76f2">
                             <span>
                                 登入Facebook
-                                <v-icon class="text-decoration-none d-inline-block" color="#1a76f2">
+                                <v-icon class="notranslate text-decoration-none d-inline-block" color="#1a76f2">
                                     mdi-facebook
                                 </v-icon>
                             </span>
@@ -409,9 +409,13 @@ input:-webkit-autofill {
             max-width: 100%;
         }
         .fbLogin span {
-            border-bottom: 1px solid #1b75f2;
+            border-bottom: 1px solid #fff;
             padding-bottom: 3px;
-            color: #1b75f2;
+            color: #fff;
+        }
+        .fbLogin span:hover {
+            color: #1a76f2;
+            border-bottom: 1px solid #1a76f2;
         }
 
         .v-breadcrumbs li .v-icon {
