@@ -59,7 +59,7 @@
                                 <span v-if="$route.params.GroupID === 'cosplay'">Cosplay</span>
                                 <span v-else-if="$route.params.GroupID === 'illustration'">插畫</span>
                                 <span v-else-if="$route.params.GroupID === 'amateur'">綜合同好組</span>
-                                -競賽組當前剩餘票數：8
+                                -競賽組當前剩餘票數：{{currentGroupTimes}}
                             </p>
                             <v-text-field type="text" flat solo-inverted hide-details prepend-inner-icon="mdi-magnify" label="輸入檢索編號" class="mt-2" v-model="keyWord" @keyup.enter="SearchBtn()"></v-text-field>
                             <v-btn class="mt-2" elevation="2" text @click="SearchBtn()"><img src="../assets/images/search-ico.png" /></v-btn>
@@ -90,7 +90,7 @@
                                         <v-btn icon color="red">
                                             <v-icon>mdi-cards-heart</v-icon>
                                         </v-btn>
-                                        <span class="text-md-body-1">{{ VoteItems[index].Id }}{{ counter }}</span>
+                                        <span class="text-md-body-1">{{ VoteItems[index].count || 0 }}</span>
 
                                         <v-spacer></v-spacer>
 
@@ -150,6 +150,10 @@ export default {
         snackbar: false,
         text: '搜索不到該作品，請輸入正確的編號!',
         dialog: 'false',
+        baseUrl: 'http://localhost:3333',
+        currentGroupTimes: 4,
+        currentUserEmail: '',
+        currentUser: ''
     }),
     created() {
         for (let i = 0; i < 99; i++) {
@@ -167,9 +171,45 @@ export default {
         this.getVoteItems()
         // 添加滚动事件，检测滚动到页面底部
         window.addEventListener('scroll', this.nextPage)
+        this.getVoteLogs()
+        this.getUserLogs()
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '27863293869',
+                xfbml      : true,
+                autoLogAppEvents : true,
+                version    : 'v8.0'
+            });
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    this.currentUser = response.authResponse.userID;
+                } else {
+                    alert('请登录facebook(01)')
+                }
+            });
+
+        };
+
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     },
 
     methods: {
+        fbLogin() {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    this.currentUser = response.authResponse.userID;
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            });
+        },
         async getVoteItems() {
             const { data } = await api.get('/voteitems.json')
             const begin = (this.currentPage - 1) * this.pageSize
@@ -206,10 +246,71 @@ export default {
             this.$router.push({ path: `/${this.$route.params.GroupID}/vote/${id}` })
         },
         Start(id) {
+            if(!this.currentUser){
+                alert('请登录facebook')
+            }
             console.log(id)
-            this.counter += 1
-            this.$refs.Dialogs.OpenDialog()
+            const url = this.baseUrl + '/api/vote/v2/mrfz_cosplay'
+            const postData = {log:{groupid:this.router_groupID,itemid:id},user:this.currentUser}
+            api.post(url, postData).then((ret) => {
+                const { data } = ret
+                if(data) {
+                    const curGroup = data.group.find(p => p.groupid == this.router_groupID);
+                    if(curGroup) {
+                        this.currentGroupTimes = curGroup.times
+                    }
+                }
+            }).catch(ret => {
+                if(ret.code == 10001) {
+                    alert('你已经投过票了')
+                    return;
+                }
+                if(ret.code == 10000 && !this.currentUserEmail) {
+                    //投票次数用完，可以填写email
+                    this.$refs.Dialogs.OpenDialog()
+                    return;
+                }
+            })
+            
+            
         },
+        async getVoteLogs() {
+            try{
+                const url = this.baseUrl + '/api/vote/v2/mrfz_cosplay/votelogs';
+                const { data } = await api.get(url)
+                const GroupData = data.filter(item => item.groupid == this.router_groupID)
+                console.log(GroupData)
+                for(const item of this.VoteItems) {
+                    const log = GroupData.find(p => p.itemid == item.Id)
+                    item.count = log ? log.count : 0
+                }
+            }catch(err) {
+                console.log(err)
+            }
+            
+        },
+        async getUserLogs() {
+            if(!this.currentUser) {
+                return;
+            }
+            const url = this.baseUrl + '/api/vote/v2/mrfz_cosplay/userlogs?user=' + this.currentUser;
+            try{
+                const { data, code, userdata } = await api.get(url)
+                if(code == 0 && data) {
+                    const curGroup = data.group.find(p => p.id == this.router_groupID);
+                    if(curGroup) {
+                        this.currentGroupTimes = curGroup.times
+                    }
+                    if(userdata && userdata.email) {
+                        this.currentUserEmail = userdata.email;
+                    }
+                }
+                console.log(data)
+            }catch(err) {
+                console.log(err)
+            }
+            
+        }
     },
 }
 </script>
