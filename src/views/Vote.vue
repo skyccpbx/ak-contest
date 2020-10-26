@@ -186,7 +186,7 @@ export default {
                 if (response.status === 'connected') {
                     this.currentUser = response.authResponse.userID;
                 } else {
-                    alert('请登录facebook(01)')
+                    console.log('请登录facebook(01)')
                 }
             });
 
@@ -202,10 +202,11 @@ export default {
     },
 
     methods: {
-        fbLogin() {
+        fbLogin(id) {
             FB.login(function(response) {
                 if (response.authResponse) {
                     this.currentUser = response.authResponse.userID;
+                    Start(id)
                 } else {
                     console.log('User cancelled login or did not fully authorize.');
                 }
@@ -249,7 +250,8 @@ export default {
         },
         Start(id) {
             if(!this.currentUser){
-                alert('请登录facebook')
+                this.fbLogin()
+                return;
             }
             console.log(id)
             const url = this.baseUrl + '/api/vote/v2/mrfz_cosplay'
@@ -264,7 +266,8 @@ export default {
                 }
             }).catch(ret => {
                 if(ret.code == 10001) {
-                    alert('你已经投过票了')
+                    this.ErrText = '您今天已經投過票了!'
+                    this.snackbar = true
                     return;
                 }
                 if(ret.code == 10000 && !this.currentUserEmail) {
