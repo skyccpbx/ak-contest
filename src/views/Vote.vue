@@ -6,7 +6,7 @@
                 <img src="../assets/images/top-banner2.jpg" />
                 <div class="slogan-vnum">
                     <v-img contain src="../assets/images/slogan.png"></v-img>
-                    <span class="vnum transition-swing elevation-24">當前總投票數:{{ VoteLength.length }}{{ counter }}</span>
+                    <span class="vnum transition-swing elevation-24">當前總投票數:{{ total }}</span>
                 </div>
             </header>
             <div class="d-flex top-breadcrumbs transition-swing elevation-24 justify-center align-center">
@@ -163,7 +163,8 @@ export default {
         baseUrl: 'http://localhost:3333',
         currentGroupTimes: 4,
         currentUserEmail: '',
-        currentUser: '',
+        currentUser: 'test6',
+        total: 0
     }),
     created() {
         for (let i = 0; i < 99; i++) {
@@ -181,12 +182,11 @@ export default {
         this.getVoteItems()
         // 添加滚动事件，检测滚动到页面底部
         window.addEventListener('scroll', this.nextPage)
-        this.getVoteLogs()
-        this.getUserLogs()
+        
 
         window.fbAsyncInit = function() {
             FB.init({
-                appId: '27863293869',
+                appId: '1452974251501275',
                 xfbml: true,
                 autoLogAppEvents: true,
                 version: 'v8.0',
@@ -232,6 +232,9 @@ export default {
 
             this.VoteItems = GroupData.slice(begin, end)
             this.VoteLength = GroupData
+
+            this.getVoteLogs()
+            this.getUserLogs()
         },
         router_group() {
             this.router_groupID = this.$route.params.GroupID
@@ -265,16 +268,22 @@ export default {
                 return;
             }
             console.log(id)
+            const currentVoteItem = this.VoteItems.find(p => p.Id == id);
+            if(!currentVoteItem){
+                return;
+            }
             const url = this.baseUrl + '/api/vote/v2/mrfz_cosplay'
             const postData = { log: { groupid: this.router_groupID, itemid: id }, user: this.currentUser }
             api.post(url, postData).then(ret => {
                     const { data } = ret
                     if (data) {
-                        const curGroup = data.group.find(p => p.groupid == this.router_groupID)
+                        const curGroup = data.group.find(p => p.id == this.router_groupID)
                         if (curGroup) {
                             this.currentGroupTimes = curGroup.times
                         }
                     }
+                    this.total++;
+                    currentVoteItem.count++
                 }
             ).catch(ret => {
                 if(ret.code == 10001) {
@@ -294,13 +303,14 @@ export default {
         async getVoteLogs() {
             try {
                 const url = this.baseUrl + '/api/vote/v2/mrfz_cosplay/votelogs'
-                const { data } = await api.get(url)
+                const { data, total } = await api.get(url)
                 const GroupData = data.filter(item => item.groupid == this.router_groupID)
                 console.log(GroupData)
                 for (const item of this.VoteItems) {
                     const log = GroupData.find(p => p.itemid == item.Id)
                     item.count = log ? log.count : 0
                 }
+                this.total = total
             } catch (err) {
                 console.log(err)
             }
