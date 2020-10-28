@@ -1,11 +1,11 @@
 const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
-    //publicPath: process.env.NODE_ENV === 'production' ? './' : './',
+    publicPath: process.env.NODE_ENV === 'production' ? './' : './',
     transpileDependencies: ['vuetify'],
     productionSourceMap: false,
     lintOnSave: false,
-    outputDir: '/Users/txwy/Documents/wwwweb/static.txwy.tw/ak/artcombat/',
+    //outputDir: '/Users/txwy/Documents/wwwweb/static.txwy.tw/ak/artcombat/',
 
     configureWebpack: config => {
         config.module
@@ -35,7 +35,7 @@ module.exports = {
                 limit: 10,
                 // 以下配置项用于配置file-loader
                 // 根据环境使用cdn或相对路径
-                publicPath: process.env.NODE_ENV === 'production' ? 'https://rescdn.imtxwy.com/ak/artcombat/img' : '',
+                //publicPath: process.env.NODE_ENV === 'production' ? 'https://rescdn.imtxwy.com/ak/artcombat/img' : '',
                 // 将图片打包到dist/img文件夹下, 不配置则打包到dist文件夹下
                 outputPath: 'img',
                 // 配置打包后图片文件名
