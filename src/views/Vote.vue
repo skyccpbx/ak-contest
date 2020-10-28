@@ -227,7 +227,7 @@ export default {
                     self.accessToken = response.authResponse.accessToken
                     self.$store.commit('setToken', self.accessToken)
                     self.$store.commit('setUser', self.currentUser)
-                    Start(id)
+                    // Start(id)
                 } else {
                     console.log('User cancelled login or did not fully authorize.')
                 }
@@ -273,7 +273,7 @@ export default {
             this.$router.push({ path: `/${this.$route.params.GroupID}/vote/${id}` })
         },
         Start(id) {
-            if (!this.currentUser) {
+            if (!this.accessToken) {
                 this.fbLogin()
                 return
             }
@@ -303,6 +303,9 @@ export default {
                     if (ret.code == 10001) {
                         this.ErrText = '您今天已經投過票了!'
                         this.snackbar = true
+                        if(this.currentGroupTimes <= 0 && !this.currentUserEmail){
+                            this.$refs.Dialogs.OpenDialog()
+                        }
                         return
                     }
                     if (ret.code == 10000 && !this.currentUserEmail) {
