@@ -244,8 +244,8 @@ export default {
             this.VoteItems = GroupData.slice(begin, end)
             this.VoteLength = GroupData
 
-            this.getVoteLogs()
-            this.getUserLogs()
+            await this.getVoteLogs()
+            await this.getUserLogs()
         },
         router_group() {
             this.router_groupID = this.$route.params.GroupID
