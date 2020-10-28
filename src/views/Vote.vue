@@ -160,7 +160,7 @@ export default {
         // 错误提示
         ErrText: '',
         dialog: 'false',
-        baseUrl: 'http://localhost:3333',
+        baseUrl: 'https://xdg.com',
         currentGroupTimes: 4,
         currentUserEmail: '',
         currentUser: 'test6',
