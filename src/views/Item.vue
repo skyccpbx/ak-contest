@@ -94,7 +94,7 @@ export default {
     },
     methods: {
         async getVoteItems() {
-            let { data } = await api.get('/voteitems.json')
+            let { data } = await api.get('/data/voteitems.json')
             var voteId = this.$route.params.id
             const GroupData = data.filter(item => item.GroupId == this.$route.params.GroupID)
             this.VoteItems = GroupData[voteId - 1]
@@ -106,10 +106,10 @@ export default {
         Start() {
             const voteId = this.$route.params.id
             const groupId = this.$route.params.GroupID
-            const user = this.$store.state.currentUser;
-            const accessToken = this.$store.state.accessToken;
-            if(!user && !accessToken) {
-                return;
+            const user = this.$store.state.currentUser
+            const accessToken = this.$store.state.accessToken
+            if (!user && !accessToken) {
+                return
             }
             const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay?accessToken=' + accessToken
             const postData = { log: { groupid: groupId, itemid: voteId } }
@@ -122,23 +122,23 @@ export default {
                             currentGroupTimes = curGroup.times
                         }
                     }
-                    this.counter++;
-                    if(currentGroupTimes <= 0 && !this.currentUserEmail) {
+                    this.counter++
+                    if (currentGroupTimes <= 0 && !this.currentUserEmail) {
                         this.$refs.Dialogs.OpenDialog()
                     }
-                }
-            ).catch(ret => {
-                if(ret.code == 10001) {
-                    this.ErrText = '您今天已經投過票了!'
-                    this.snackbar = true
-                    return;
-                }
-                if(ret.code == 10000 && !this.currentUserEmail) {
-                    //投票次数用完，可以填写email
-                    this.$refs.Dialogs.OpenDialog()
-                    return;
-                }
-            })
+                })
+                .catch(ret => {
+                    if (ret.code == 10001) {
+                        this.ErrText = '您今天已經投過票了!'
+                        this.snackbar = true
+                        return
+                    }
+                    if (ret.code == 10000 && !this.currentUserEmail) {
+                        //投票次数用完，可以填写email
+                        this.$refs.Dialogs.OpenDialog()
+                        return
+                    }
+                })
         },
         getLargeImg(imgSrc) {
             this.imgSrc = imgSrc

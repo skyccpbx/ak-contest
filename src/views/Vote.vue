@@ -234,7 +234,7 @@ export default {
             })
         },
         async getVoteItems() {
-            const { data } = await api.get('/voteitems.json')
+            const { data } = await api.get('/data/voteitems.json')
             const begin = (this.currentPage - 1) * this.pageSize
             const end = this.currentPage * this.pageSize
             const GroupData = data.filter(item => item.GroupId == this.router_groupID)
