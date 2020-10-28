@@ -38,20 +38,20 @@ export default {
         OpenDialog() {
             setTimeout(() => {
                 this.dialog = true
-            }, 550)
+            }, 300)
         },
         async validate() {
             const vret = this.$refs.formDate.validate()
-            if(!vret) return;
+            if (!vret) return
             const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/userdata?accessToken=' + this.$store.state.accessToken
             const postData = { email: this.email }
-            try{
+            try {
                 await api.post(url, postData)
                 this.$root.$data.currentUserEmail = email;
             } catch (err) {
                 console.log(err)
             } finally {
-                this.dialog = false;
+                this.dialog = false
             }
         },
         reset() {
