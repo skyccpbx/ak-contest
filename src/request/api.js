@@ -4,7 +4,7 @@ const qs = require('qs')
 /****** 创建axios实例 ******/
 
 /*全局配置axios*/
-axios.defaults.baseURL = 'https://ak.txwy.tw/artcombat_demo/'
+//axios.defaults.baseURL = '/'
 
 // const service = axios.create({
 //     baseURL: baseURL,
