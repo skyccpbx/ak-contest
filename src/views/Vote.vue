@@ -164,6 +164,7 @@ export default {
         currentUserEmail: '',
         currentUser: '',
         total: 0,
+        totalTimes: 0
     }),
     created() {
         for (let i = 0; i < 99; i++) {
@@ -292,10 +293,13 @@ export default {
                         if (curGroup) {
                             this.currentGroupTimes = curGroup.times
                         }
+                        for(const g of data.group) {
+                            this.totalTimes += g.times
+                        }
                     }
                     this.total++
                     currentVoteItem.count++
-                    if (this.currentGroupTimes <= 0 && !this.currentUserEmail) {
+                    if (this.totalTimes <= 0 && !this.currentUserEmail) {
                         this.$refs.Dialogs.OpenDialog()
                     }
                 })
@@ -303,7 +307,7 @@ export default {
                     if (ret.code == 10001) {
                         this.ErrText = '您今天已經投過票了!'
                         this.snackbar = true
-                        if(this.currentGroupTimes <= 0 && !this.currentUserEmail){
+                        if(this.totalTimes <= 0 && !this.currentUserEmail){
                             this.$refs.Dialogs.OpenDialog()
                         }
                         return
@@ -345,6 +349,9 @@ export default {
                     if (userdata && userdata.email) {
                         this.currentUserEmail = userdata.email
                         console.log(this.currentUserEmail)
+                    }
+                    for(const g of data.group) {
+                        this.totalTimes += g.times
                     }
                 }
                 console.log(data)

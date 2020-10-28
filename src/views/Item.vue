@@ -115,15 +115,19 @@ export default {
             const postData = { log: { groupid: groupId, itemid: voteId } }
             api.post(url, postData).then(ret => {
                     let currentGroupTimes = 4
+                    let totalTiems = 0
                     const { data } = ret
                     if (data) {
                         const curGroup = data.group.find(p => p.id == groupId)
                         if (curGroup) {
                             currentGroupTimes = curGroup.times
                         }
+                        for(const g of data.group) {
+                            totalTiems += g.times
+                        }
                     }
                     this.counter++
-                    if (currentGroupTimes <= 0 && !this.currentUserEmail) {
+                    if (totalTiems <= 0 && !this.currentUserEmail) {
                         this.$refs.Dialogs.OpenDialog()
                     }
                 })
