@@ -47,6 +47,7 @@ export default {
             const postData = { email: this.email }
             try{
                 await api.post(url, postData)
+                this.$root.$data.currentUserEmail = email;
             } catch (err) {
                 console.log(err)
             } finally {
