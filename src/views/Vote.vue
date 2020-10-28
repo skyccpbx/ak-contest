@@ -104,7 +104,7 @@
                                         <v-spacer></v-spacer>
 
                                         <vue-star class="px-3 like-btn elevation-24" animate="animate__animated animate__bounceIn" color="#ff3b3b">
-                                            <v-btn class="v-btn v-btn--flat star-btn" slot="icon" @click.once="Start(VoteItems[index].Id)">
+                                            <v-btn class="v-btn v-btn--flat star-btn" slot="icon" @click="Start(VoteItems[index].Id)">
                                                 <v-icon text left class="mr-2">mdi-thumb-up</v-icon>
                                                 Like
                                             </v-btn>
@@ -162,9 +162,8 @@ export default {
         dialog: 'false',
         currentGroupTimes: 4,
         currentUserEmail: '',
-        currentUser: 'test6666',
+        currentUser: '',
         total: 0,
-        accessToken: ''
     }),
     created() {
         for (let i = 0; i < 99; i++) {
@@ -273,18 +272,19 @@ export default {
             this.$router.push({ path: `/${this.$route.params.GroupID}/vote/${id}` })
         },
         Start(id) {
-            if(!this.currentUser){
+            if (!this.currentUser) {
                 this.fbLogin()
-                return;
+                return
             }
             console.log(id)
-            const currentVoteItem = this.VoteItems.find(p => p.Id == id);
-            if(!currentVoteItem){
-                return;
+            const currentVoteItem = this.VoteItems.find(p => p.Id == id)
+            if (!currentVoteItem) {
+                return
             }
             const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay?accessToken=' + this.accessToken
             const postData = { log: { groupid: this.router_groupID, itemid: id }, user: this.currentUser }
-            api.post(url, postData).then(ret => {
+            api.post(url, postData)
+                .then(ret => {
                     const { data } = ret
                     if (data) {
                         const curGroup = data.group.find(p => p.id == this.router_groupID)
@@ -292,7 +292,7 @@ export default {
                             this.currentGroupTimes = curGroup.times
                         }
                     }
-                    this.total++;
+                    this.total++
                     currentVoteItem.count++
                     if(this.currentGroupTimes <= 0 && !this.currentUserEmail) {
                         this.$refs.Dialogs.OpenDialog()
@@ -350,7 +350,7 @@ export default {
                 console.log(err)
             }
         },
-    }
+    },
 }
 </script>
 
