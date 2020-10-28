@@ -41,7 +41,8 @@ export default {
             }, 550)
         },
         async validate() {
-            this.$refs.formDate.validate()
+            const vret = this.$refs.formDate.validate()
+            if(!vret) return;
             const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/userdata?accessToken=' + this.$store.state.accessToken
             const postData = { email: this.email }
             try{
