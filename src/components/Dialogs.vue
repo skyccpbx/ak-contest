@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { api } from '@/request/api'
 export default {
     name: 'Dialogs',
     data: () => ({
@@ -39,8 +40,17 @@ export default {
                 this.dialog = true
             }, 550)
         },
-        validate() {
+        async validate() {
             this.$refs.formDate.validate()
+            const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/userdata?accessToken=' + this.$store.state.accessToken
+            const postData = { email: this.email, user: this.$store.state.currentUser }
+            try{
+                await api.post(url, postData)
+            } catch (err) {
+                console.log(err)
+            } finally {
+                this.dialog = false;
+            }
         },
         reset() {
             this.$refs.formDate.reset()

@@ -10,6 +10,7 @@
 import TopNav from '@/components/TopNav'
 import Footer from '@/components/Footer'
 
+
 export default {
     name: 'App',
     components: {

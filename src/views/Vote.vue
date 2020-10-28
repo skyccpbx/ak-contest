@@ -160,11 +160,11 @@ export default {
         // 错误提示
         ErrText: '',
         dialog: 'false',
-        baseUrl: 'https://xdg.com',
         currentGroupTimes: 4,
         currentUserEmail: '',
-        currentUser: '',
-        total: 0
+        currentUser: 'test6666',
+        total: 0,
+        accessToken: ''
     }),
     created() {
         for (let i = 0; i < 99; i++) {
@@ -182,6 +182,10 @@ export default {
         this.getVoteItems()
         // 添加滚动事件，检测滚动到页面底部
         window.addEventListener('scroll', this.nextPage)
+
+        //test
+        this.$store.commit('setUser', this.currentUser)
+        console.log(this.$store.state.baseUrl, 'store baseurl')
         
 
         window.fbAsyncInit = function() {
@@ -194,6 +198,9 @@ export default {
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
                     this.currentUser = response.authResponse.userID
+                    this.accessToken = response.authResponse.accessToken;
+                    this.$store.commit('setToken', this.accessToken)
+                    this.$store.commit('setUser', this.currentUser)
                 } else {
                     console.log('请登录facebook(01)')
                 }
@@ -216,7 +223,10 @@ export default {
         fbLogin(id) {
             FB.login(function(response) {
                 if (response.authResponse) {
-                    this.currentUser = response.authResponse.userID;
+                    this.currentUser = response.authResponse.userID
+                    this.accessToken = response.authResponse.accessToken;
+                    this.$store.commit('setToken', this.accessToken)
+                    this.$store.commit('setUser', this.currentUser)
                     Start(id)
                 } else {
                     console.log('User cancelled login or did not fully authorize.')
@@ -272,7 +282,7 @@ export default {
             if(!currentVoteItem){
                 return;
             }
-            const url = this.baseUrl + '/api/vote/v2/mrfz_cosplay'
+            const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay?accessToken=' + this.accessToken
             const postData = { log: { groupid: this.router_groupID, itemid: id }, user: this.currentUser }
             api.post(url, postData).then(ret => {
                     const { data } = ret
@@ -284,6 +294,9 @@ export default {
                     }
                     this.total++;
                     currentVoteItem.count++
+                    if(this.currentGroupTimes <= 0 && !this.currentUserEmail) {
+                        this.$refs.Dialogs.OpenDialog()
+                    }
                 }
             ).catch(ret => {
                 if(ret.code == 10001) {
@@ -302,7 +315,7 @@ export default {
         },
         async getVoteLogs() {
             try {
-                const url = this.baseUrl + '/api/vote/v2/mrfz_cosplay/votelogs'
+                const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/votelogs?accessToken=' + this.accessToken
                 const { data, total } = await api.get(url)
                 const GroupData = data.filter(item => item.groupid == this.router_groupID)
                 console.log(GroupData)
@@ -319,7 +332,7 @@ export default {
             if (!this.currentUser) {
                 return
             }
-            const url = this.baseUrl + '/api/vote/v2/mrfz_cosplay/userlogs?user=' + this.currentUser
+            const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/userlogs?user=' + this.currentUser
             try {
                 const { data, code, userdata } = await api.get(url)
                 if (code == 0 && data) {
@@ -329,6 +342,7 @@ export default {
                     }
                     if (userdata && userdata.email) {
                         this.currentUserEmail = userdata.email
+                        console.log(this.currentUserEmail)
                     }
                 }
                 console.log(data)

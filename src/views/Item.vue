@@ -35,6 +35,18 @@
                                             <v-btn text fab color="#fff"><img src="../assets/images/facebook-ico.png" /></v-btn>
                                             <v-btn text fab color="#fff"><img src="../assets/images/line-ico.png" /></v-btn>
                                         </v-flex>
+                                        <v-snackbar class="mt-16 d-flex align-center justify-center" v-model="snackbar" multi-line timeout="3000" color="#B71C1C">
+                                            <div class="d-flex align-center justify-center">
+                                                <v-icon text>mdi-alert</v-icon>
+                                                <p class="ml-2 mb-0 mr-0">{{ ErrText }}</p>
+                                            </div>
+
+                                            <template v-slot:action="{ attrs }">
+                                                <v-btn color="#fff" text v-bind="attrs" @click="snackbar = false">
+                                                    <v-icon top>mdi-window-close</v-icon>
+                                                </v-btn>
+                                            </template>
+                                        </v-snackbar>
                                     </div>
                                 </v-row>
                             </v-sheet>
@@ -74,6 +86,8 @@ export default {
         model: null,
         counter: 1000,
         imgSrc: '',
+        snackbar: false,
+        ErrText: '',
     }),
     created() {
         this.getVoteItems()
@@ -86,13 +100,62 @@ export default {
             this.VoteItems = GroupData[voteId - 1]
             this.imgSrc = this.VoteItems.ImgList.LargeImg[0]
             //console.log(this.imgSrc)
+
+            this.getVoteLogs()
         },
         Start() {
-            this.counter += 1
+            const voteId = this.$route.params.id
+            const groupId = this.$route.params.GroupID
+            const user = this.$store.state.currentUser;
+            const accessToken = this.$store.state.accessToken;
+            if(!user && !accessToken) {
+                return;
+            }
+            const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay?accessToken=' + accessToken
+            const postData = { log: { groupid: groupId, itemid: voteId }, user }
+            api.post(url, postData).then(ret => {
+                    let currentGroupTimes = 4
+                    const { data } = ret
+                    if (data) {
+                        const curGroup = data.group.find(p => p.id == groupId)
+                        if (curGroup) {
+                            currentGroupTimes = curGroup.times
+                        }
+                    }
+                    this.counter++;
+                    if(currentGroupTimes <= 0 && !this.currentUserEmail) {
+                        this.$refs.Dialogs.OpenDialog()
+                    }
+                }
+            ).catch(ret => {
+                if(ret.code == 10001) {
+                    this.ErrText = '您今天已經投過票了!'
+                    this.snackbar = true
+                    return;
+                }
+                if(ret.code == 10000 && !this.currentUserEmail) {
+                    //投票次数用完，可以填写email
+                    this.$refs.Dialogs.OpenDialog()
+                    return;
+                }
+            })
         },
         getLargeImg(imgSrc) {
             this.imgSrc = imgSrc
             //console.log(imgSrc)
+        },
+        async getVoteLogs() {
+            try {
+                const voteId = this.$route.params.id
+                const groupId = this.$route.params.GroupID
+                const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/votelogs'
+                const { data, total } = await api.get(url)
+                const GroupData = data.filter(item => item.groupid == groupId)
+                const log = GroupData.find(p => p.itemid == voteId)
+                this.counter = log ? log.count : 0
+            } catch (err) {
+                console.log(err)
+            }
         },
     },
 }
