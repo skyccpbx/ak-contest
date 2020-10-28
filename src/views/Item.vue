@@ -66,6 +66,7 @@
                     <ShareBtn />
                 </v-row>
             </v-container>
+            <Dialogs ref="Dialogs" class="dialogs-components" />
         </v-main>
     </v-app>
 </template>
@@ -74,12 +75,14 @@
 import TopNavM from '@/components/TopNavM'
 import ShareBtn from '@/components/ShareBtn'
 import { api } from '@/request/api'
+import Dialogs from '@/components/Dialogs'
 
 export default {
     name: 'Item',
     components: {
         TopNavM,
         ShareBtn,
+        Dialogs,
     },
     data: () => ({
         VoteItems: [], //当前页显示内容
@@ -88,6 +91,7 @@ export default {
         imgSrc: '',
         snackbar: false,
         ErrText: '',
+        dialog: 'false',
     }),
     created() {
         this.getVoteItems()
@@ -113,7 +117,8 @@ export default {
             }
             const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay?accessToken=' + accessToken
             const postData = { log: { groupid: groupId, itemid: voteId } }
-            api.post(url, postData).then(ret => {
+            api.post(url, postData)
+                .then(ret => {
                     let currentGroupTimes = 4
                     const { data } = ret
                     if (data) {
