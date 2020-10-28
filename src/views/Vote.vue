@@ -163,7 +163,7 @@ export default {
         baseUrl: 'https://xdg.com',
         currentGroupTimes: 4,
         currentUserEmail: '',
-        currentUser: 'test6',
+        currentUser: '',
         total: 0
     }),
     created() {
