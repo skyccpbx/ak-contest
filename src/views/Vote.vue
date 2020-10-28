@@ -185,7 +185,6 @@ export default {
         //test
         this.$store.commit('setUser', this.currentUser)
         console.log(this.$store.state.baseUrl, 'store baseurl')
-        
 
         window.fbAsyncInit = function() {
             FB.init({
@@ -197,7 +196,7 @@ export default {
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
                     this.currentUser = response.authResponse.userID
-                    this.accessToken = response.authResponse.accessToken;
+                    this.accessToken = response.authResponse.accessToken
                     this.$store.commit('setToken', this.accessToken)
                     this.$store.commit('setUser', this.currentUser)
                 } else {
@@ -223,7 +222,7 @@ export default {
             FB.login(function(response) {
                 if (response.authResponse) {
                     this.currentUser = response.authResponse.userID
-                    this.accessToken = response.authResponse.accessToken;
+                    this.accessToken = response.authResponse.accessToken
                     this.$store.commit('setToken', this.accessToken)
                     this.$store.commit('setUser', this.currentUser)
                     Start(id)
@@ -294,24 +293,22 @@ export default {
                     }
                     this.total++
                     currentVoteItem.count++
-                    if(this.currentGroupTimes <= 0 && !this.currentUserEmail) {
+                    if (this.currentGroupTimes <= 0 && !this.currentUserEmail) {
                         this.$refs.Dialogs.OpenDialog()
                     }
-                }
-            ).catch(ret => {
-                if(ret.code == 10001) {
-                    this.ErrText = '您今天已經投過票了!'
-                    this.snackbar = true
-                    return;
-                }
-                if(ret.code == 10000 && !this.currentUserEmail) {
-                    //投票次数用完，可以填写email
-                    this.$refs.Dialogs.OpenDialog()
-                    return;
-                }
-            })
-            
-            
+                })
+                .catch(ret => {
+                    if (ret.code == 10001) {
+                        this.ErrText = '您今天已經投過票了!'
+                        this.snackbar = true
+                        return
+                    }
+                    if (ret.code == 10000 && !this.currentUserEmail) {
+                        //投票次数用完，可以填写email
+                        this.$refs.Dialogs.OpenDialog()
+                        return
+                    }
+                })
         },
         async getVoteLogs() {
             try {
@@ -369,10 +366,7 @@ input:-webkit-autofill {
 .VueStar__icon div {
     padding: 4px 14px;
 }
-.VueStar__ground {
-    width: auto;
-    height: auto;
-}
+
 .VueStar__decoration {
     margin-top: -33px;
     margin-left: -28px;
@@ -479,6 +473,10 @@ input:-webkit-autofill {
             border-top: 3px solid #0049dd;
             background: url(../assets/images/vote-item.png) no-repeat center center;
             background-size: cover;
+        }
+        .VueStar__ground {
+            width: auto !important;
+            height: auto !important;
         }
         .card-bg {
             background: url(../assets/images/vote-item-bottom.png) no-repeat center center;

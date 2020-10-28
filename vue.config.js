@@ -1,15 +1,15 @@
 const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
-    //publicPath: process.env.NODE_ENV === 'production' ? './' : './',
+    publicPath: process.env.NODE_ENV === 'production' ? 'https://ak.txwy.tw/artcombat_demo/' : '',
     transpileDependencies: ['vuetify'],
     productionSourceMap: false,
     lintOnSave: false,
-    outputDir: '/Users/txwy/Documents/wwwweb/static.txwy.tw/ak/artcombat/',
+    outputDir: '/Users/txwy/Documents/wwwweb/static.txwy.tw/ak/artcombat_demo/',
 
     configureWebpack: config => {
         config.module
-        if (process.env.NODE_ENV === 'production' ? '' : '') {
+        if (process.env.NODE_ENV === 'production' ? './' : '') {
             return {
                 plugins: [
                     new CompressionPlugin({
