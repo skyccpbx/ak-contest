@@ -112,7 +112,7 @@ export default {
                 return;
             }
             const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay?accessToken=' + accessToken
-            const postData = { log: { groupid: groupId, itemid: voteId }, user }
+            const postData = { log: { groupid: groupId, itemid: voteId } }
             api.post(url, postData).then(ret => {
                     let currentGroupTimes = 4
                     const { data } = ret

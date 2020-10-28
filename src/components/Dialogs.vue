@@ -43,7 +43,7 @@ export default {
         async validate() {
             this.$refs.formDate.validate()
             const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/userdata?accessToken=' + this.$store.state.accessToken
-            const postData = { email: this.email, user: this.$store.state.currentUser }
+            const postData = { email: this.email }
             try{
                 await api.post(url, postData)
             } catch (err) {

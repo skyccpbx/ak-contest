@@ -185,6 +185,7 @@ export default {
         //test
         this.$store.commit('setUser', this.currentUser)
         console.log(this.$store.state.baseUrl, 'store baseurl')
+        const self = this;
 
         window.fbAsyncInit = function() {
             FB.init({
@@ -195,10 +196,10 @@ export default {
             })
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
-                    this.currentUser = response.authResponse.userID
-                    this.accessToken = response.authResponse.accessToken
-                    this.$store.commit('setToken', this.accessToken)
-                    this.$store.commit('setUser', this.currentUser)
+                    self.currentUser = response.authResponse.userID
+                    self.accessToken = response.authResponse.accessToken
+                    self.$store.commit('setToken', self.accessToken)
+                    self.$store.commit('setUser', self.currentUser)
                 } else {
                     console.log('请登录facebook(01)')
                 }
@@ -219,12 +220,13 @@ export default {
 
     methods: {
         fbLogin(id) {
+            const self = this;
             FB.login(function(response) {
                 if (response.authResponse) {
-                    this.currentUser = response.authResponse.userID
-                    this.accessToken = response.authResponse.accessToken
-                    this.$store.commit('setToken', this.accessToken)
-                    this.$store.commit('setUser', this.currentUser)
+                    self.currentUser = response.authResponse.userID
+                    self.accessToken = response.authResponse.accessToken
+                    self.$store.commit('setToken', self.accessToken)
+                    self.$store.commit('setUser', self.currentUser)
                     Start(id)
                 } else {
                     console.log('User cancelled login or did not fully authorize.')
@@ -281,7 +283,7 @@ export default {
                 return
             }
             const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay?accessToken=' + this.accessToken
-            const postData = { log: { groupid: this.router_groupID, itemid: id }, user: this.currentUser }
+            const postData = { log: { groupid: this.router_groupID, itemid: id } }
             api.post(url, postData)
                 .then(ret => {
                     const { data } = ret
@@ -329,7 +331,7 @@ export default {
             if (!this.currentUser) {
                 return
             }
-            const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/userlogs?user=' + this.currentUser
+            const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/userlogs?accessToken=' + this.accessToken
             try {
                 const { data, code, userdata } = await api.get(url)
                 if (code == 0 && data) {
