@@ -166,7 +166,7 @@ export default {
         total: 0,
         totalTimes: 0
     }),
-    created() {
+    async created() {
         for (let i = 0; i < 99; i++) {
             this.VoteItems.push({
                 count: Math.random() * this.VoteItems.length,
@@ -179,7 +179,7 @@ export default {
         // 获取router_groupId
         this.router_group()
         // 获取json数据
-        this.getVoteItems()
+        await this.getVoteItems()
         // 添加滚动事件，检测滚动到页面底部
         window.addEventListener('scroll', this.nextPage)
 
@@ -201,6 +201,7 @@ export default {
                     self.accessToken = response.authResponse.accessToken
                     self.$store.commit('setToken', self.accessToken)
                     self.$store.commit('setUser', self.currentUser)
+                    this.getUserLogs()
                 } else {
                     console.log('请登录facebook(01)')
                 }
@@ -245,7 +246,7 @@ export default {
             this.VoteLength = GroupData
 
             await this.getVoteLogs()
-            await this.getUserLogs()
+            
         },
         router_group() {
             this.router_groupID = this.$route.params.GroupID
