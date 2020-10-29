@@ -201,7 +201,7 @@ export default {
                     self.accessToken = response.authResponse.accessToken
                     self.$store.commit('setToken', self.accessToken)
                     self.$store.commit('setUser', self.currentUser)
-                    this.getUserLogs()
+                    self.getUserLogs()
                 } else {
                     console.log('请登录facebook(01)')
                 }
