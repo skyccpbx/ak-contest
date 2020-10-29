@@ -164,7 +164,7 @@ export default {
         currentUserEmail: '',
         currentUser: '',
         total: 0,
-        totalTimes: 0
+        totalTimes: 0,
     }),
     async created() {
         for (let i = 0; i < 99; i++) {
@@ -186,7 +186,7 @@ export default {
         //test
         this.$store.commit('setUser', this.currentUser)
         console.log(this.$store.state.baseUrl, 'store baseurl')
-        const self = this;
+        const self = this
 
         window.fbAsyncInit = function() {
             FB.init({
@@ -201,7 +201,7 @@ export default {
                     self.accessToken = response.authResponse.accessToken
                     self.$store.commit('setToken', self.accessToken)
                     self.$store.commit('setUser', self.currentUser)
-                    this.getUserLogs()
+                    self.getUserLogs()
                 } else {
                     console.log('请登录facebook(01)')
                 }
@@ -222,7 +222,7 @@ export default {
 
     methods: {
         fbLogin(id) {
-            const self = this;
+            const self = this
             FB.login(function(response) {
                 if (response.authResponse) {
                     self.currentUser = response.authResponse.userID
@@ -246,7 +246,6 @@ export default {
             this.VoteLength = GroupData
 
             await this.getVoteLogs()
-            
         },
         router_group() {
             this.router_groupID = this.$route.params.GroupID
@@ -294,7 +293,7 @@ export default {
                         if (curGroup) {
                             this.currentGroupTimes = curGroup.times
                         }
-                        for(const g of data.group) {
+                        for (const g of data.group) {
                             this.totalTimes += g.times
                         }
                     }
@@ -308,7 +307,7 @@ export default {
                     if (ret.code == 10001) {
                         this.ErrText = '您今天已經投過票了!'
                         this.snackbar = true
-                        if(this.totalTimes <= 0 && !this.currentUserEmail){
+                        if (this.totalTimes <= 0 && !this.currentUserEmail) {
                             this.$refs.Dialogs.OpenDialog()
                         }
                         return
@@ -351,7 +350,7 @@ export default {
                         this.currentUserEmail = userdata.email
                         console.log(this.currentUserEmail)
                     }
-                    for(const g of data.group) {
+                    for (const g of data.group) {
                         this.totalTimes += g.times
                     }
                 }
