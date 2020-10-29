@@ -2,16 +2,17 @@
     <div class="contag vote-container">
         <TopNavM class="top-navm" />
         <v-main class="about-container">
-            <header class="top-banner text-center">
-                <img src="../assets/images/top-banner2.jpg" />
+            <header class="top-banner top-banner2 text-center">
+                <img class="hidden-md-and-up" src="../assets/images/top-mb.jpg" />
+                <img class="hidden-sm-and-down" src="../assets/images/top-banner2.jpg" />
                 <div class="slogan-vnum">
                     <v-img contain src="../assets/images/slogan.png"></v-img>
                     <span class="vnum transition-swing elevation-24">當前總投票數:{{ total }}</span>
                 </div>
             </header>
-            <div class="d-flex top-breadcrumbs transition-swing elevation-24 justify-center align-center">
-                <v-img contain max-width="197px" src="../assets/images/tp-title.png"></v-img>
-                <v-breadcrumbs class="">
+            <div class="d-flex flex-md-row flex-column top-breadcrumbs transition-swing elevation-24 justify-center align-center">
+                <v-img contain max-width="197px" class="tp-title" src="../assets/images/tp-title.png"></v-img>
+                <v-breadcrumbs class="flex-md-row flex-column">
                     <li>
                         <a @click="fbLogin()" class="fbLogin v-breadcrumbs__item" color="#1a76f2">
                             <span>
@@ -23,13 +24,19 @@
                         </a>
                     </li>
                     <li class="v-breadcrumbs__divider">
-                        <v-icon color="theme--dark">
+                        <v-icon class="hidden-md-and-up" color="theme--dark ">
+                            mdi-transfer-down
+                        </v-icon>
+                        <v-icon class="hidden-sm-and-down" color="theme--dark">
                             mdi-fast-forward
                         </v-icon>
                     </li>
                     <li><a class="v-breadcrumbs__item">成功登入後即可進行投票</a></li>
                     <li class="v-breadcrumbs__divider">
-                        <v-icon color="theme--dark">
+                        <v-icon class="hidden-md-and-up" color="theme--dark ">
+                            mdi-transfer-down
+                        </v-icon>
+                        <v-icon class="hidden-sm-and-down" color="theme--dark">
                             mdi-fast-forward
                         </v-icon>
                     </li>
@@ -45,7 +52,7 @@
                 </v-breadcrumbs>
             </div>
             <v-container class="my-0">
-                <v-row class="flex-column" justify="center">
+                <v-row class="vote-row">
                     <p class="my-8">
                         2020/12/25-2021/1/10投票期間，每個FB帳號
                         <br />
@@ -60,16 +67,18 @@
                         銅賞得獎者將於2021/1/15收到主辦單位寄發之EMAIL中獎通知，該名單將同步公告於粉絲團。
                         <br />
                     </p>
-                    <v-flex class="search-box d-flex justify-space-between align-start">
+                    <v-flex class="search-box d-flex flex-md-row flex-column justify-space-between align-start">
                         <h1 @click="router_group()"><img src="../assets/images/vote-tit01.png" /></h1>
 
-                        <div class="d-flex justify-end align-center searchfield">
-                            <p class="mr-12 mt-3 mb-0 ml-0" color="#0049dd">
+                        <div class="d-flex flex-md-row flex-column justify-end align-center searchfield">
+                            <p class="mt-3 mb-0 ml-0" color="#0049dd">
                                 <span v-if="$route.params.GroupID === 'cosplay'">Cosplay -競賽組當前剩餘票數：{{ currentGroupTimes }}</span>
                                 <span v-else-if="$route.params.GroupID === 'illustration'">插畫 -競賽組當前剩餘票數：{{ currentGroupTimes }}</span>
                             </p>
-                            <v-text-field type="text" flat solo-inverted hide-details prepend-inner-icon="mdi-magnify" label="輸入檢索編號" class="mt-2" v-model="keyWord" @keyup.enter="SearchBtn()"></v-text-field>
-                            <v-btn class="mt-2" elevation="2" text @click="SearchBtn()"><img src="../assets/images/search-ico.png" /></v-btn>
+                            <v-flex class="d-flex justify-end align-center search-field">
+                                <v-text-field type="text" flat solo-inverted hide-details prepend-inner-icon="mdi-magnify" label="輸入檢索編號" class="mt-2" v-model="keyWord" @keyup.enter="SearchBtn()"></v-text-field>
+                                <v-btn class="mt-2" elevation="2" text @click="SearchBtn()"><img src="../assets/images/search-ico.png" /></v-btn>
+                            </v-flex>
                             <v-snackbar class="mt-16 d-flex align-center justify-center" v-model="snackbar" multi-line timeout="3000" color="#B71C1C">
                                 <div class="d-flex align-center justify-center">
                                     <v-icon text>mdi-alert</v-icon>
@@ -85,10 +94,10 @@
                         </div>
                     </v-flex>
                     <v-row class="mb-6 vote-item">
-                        <v-col class="col-lg-3 col-md-4 col-6 transition-swing" v-for="(item, index) in VoteItems" :key="index">
+                        <v-col class="col-lg-3 col-md-4 col-6 col-vote-m transition-swing" v-for="(item, index) in VoteItems" :key="index">
                             <v-card class="mx-auto" max-width="344" v-if="VoteItems[index].ImgList">
                                 <span class="item-num">NO: {{ VoteItems[index].Id }}</span>
-                                <router-link :to="`/${$route.params.GroupID}/vote/${VoteItems[index].Id}`"><v-img :src="VoteItems[index].ImgList.ThumImg[0]" height="200" /></router-link>
+                                <router-link :to="`/${$route.params.GroupID}/vote/${VoteItems[index].Id}`"><v-img class="thum-img" :src="VoteItems[index].ImgList.ThumImg[0]" height="200" /></router-link>
                                 <div class="card-bg">
                                     <v-card-title>
                                         <span class="d-inline-block text-truncate">{{ VoteItems[index].Title }}</span>
@@ -112,11 +121,11 @@
                             </v-card>
                         </v-col>
                     </v-row>
-                    <footer>
+                    <div class="footer-loading">
                         <v-btn block color="secondary" :loading="loading" @click="nextPage()">
                             什么也没有了！@ ！@
                         </v-btn>
-                    </footer>
+                    </div>
 
                     <ShareBtn />
                 </v-row>
@@ -368,6 +377,11 @@ input:-webkit-autofill {
 .VueStar__icon {
     width: 100%;
     z-index: 100;
+    .v-btn:not(.v-btn--round).v-size--default {
+        height: 30px;
+        min-width: 64px;
+        padding: 0 16px;
+    }
 }
 .v-snack__wrapper.theme--dark {
     background-color: #333333;
@@ -390,7 +404,7 @@ input:-webkit-autofill {
         }
         .slogan-vnum {
             position: absolute;
-            bottom: 35px;
+            bottom: 65px;
             left: 50%;
             -webkit-transform: translateX(-50%);
             -ms-transform: translateX(-50%);
@@ -411,6 +425,7 @@ input:-webkit-autofill {
             }
         }
     }
+
     p {
         font-size: 17px;
         margin-left: 42px;
@@ -461,10 +476,10 @@ input:-webkit-autofill {
             padding: 0;
         }
         .searchfield {
-            width: 70%;
+            width: 60%;
             text-align: left;
             .v-input {
-                max-width: 35%;
+                max-width: 45%;
             }
         }
         .body-1 {
@@ -495,7 +510,7 @@ input:-webkit-autofill {
                 align-items: center;
                 display: flex;
                 flex-wrap: wrap;
-                font-size: 1.15rem;
+                font-size: 0.9rem;
                 font-weight: 500;
                 letter-spacing: 0;
                 line-height: 1rem;
@@ -533,9 +548,15 @@ input:-webkit-autofill {
             cursor: pointer;
             padding: 0 !important;
             .v-icon {
-                font-size: 20px;
+                font-size: 18px;
+            }
+            .v-btn.v-size--default {
+                font-size: 0.85rem;
             }
         }
+    }
+    .footer-loading {
+        width: 100%;
     }
 }
 @media (max-width: 1280px) {
@@ -551,13 +572,27 @@ input:-webkit-autofill {
             }
         }
     }
+    .slogan-vnum {
+        position: absolute;
+        bottom: 40px !important;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
+
 @media (max-width: 750px) {
     .about-container .search-box .v-btn:not(.v-btn--round).v-size--default {
         height: auto;
         min-width: 45px;
         padding: 0;
     }
+    .tp-title {
+        margin-top: 10px;
+    }
+    .top-banner2 {
+        margin-top: 60px;
+    }
+
     .about-container {
         h1 img {
             zoom: 72%;
@@ -577,15 +612,122 @@ input:-webkit-autofill {
             color: #fff !important;
             font-size: 12px;
         }
-        .v-btn:not(.v-btn--round).v-size--default {
+        .VueStar__icon .v-btn:not(.v-btn--round).v-size--default {
             height: 28px;
             min-width: 64px;
-            padding: 0 16px;
-            margin-top: 5px;
+            padding: 0 10px !important;
         }
         .v-snack--multi-line .v-snack__wrapper {
             min-height: 48px;
         }
+    }
+    .about-container .top-banner .slogan-vnum .v-image {
+        margin-bottom: 15px;
+        max-width: 62vw;
+        margin-left: -1.8vw;
+    }
+    .about-container .top-banner .slogan-vnum span {
+        padding: 5px 12px;
+        text-align: center;
+        font-size: 2vh;
+    }
+    .vote-container {
+        .top-breadcrumbs a {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0 0 4px;
+        }
+        .top-breadcrumbs {
+            background: #000;
+            margin-top: -8px;
+            margin-bottom: -25px;
+        }
+        .searchfield .v-input {
+            max-width: 100% !important;
+        }
+        .search-box {
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+        .row {
+            margin: 0 -2px;
+        }
+        .container {
+            width: 100%;
+            padding: 6px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .col-vote-m {
+            padding: 3px 3px !important;
+        }
+        .v-btn:not(.v-btn--round).v-size--default {
+            height: 28px;
+            min-width: 64px;
+            padding: 0 16px;
+            margin-top: 0;
+        }
+        .thum-img {
+            height: 155px !important;
+        }
+        .search-field {
+            width: 100%;
+        }
+    }
+    .about-container .vote-item .like-btn {
+        border: 1px solid #fff;
+        border-radius: 0;
+        background-color: #04040475 !important;
+        font-size: 16px;
+        position: relative;
+        top: 0px;
+        right: 3px;
+        cursor: pointer;
+        padding: 0 !important;
+    }
+    .about-container .vote-item .item-num {
+        color: #000;
+        width: 98%;
+        display: block;
+        text-align: right;
+        font-weight: 500;
+        padding: 0;
+        margin-bottom: -7px;
+        font-size: 0.8rem;
+    }
+    .about-container .vote-item .card-bg .v-card__title {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 0.9rem;
+        word-break: break-all;
+        margin-bottom: -5px;
+        padding: 10px 10px 0;
+    }
+    .about-container .search-box .searchfield {
+        width: 100%;
+        text-align: left;
+        align-items: flex-end !important;
+        margin-top: -47px;
+    }
+    .about-container .search-box .v-input__control {
+        min-height: 35px;
+        padding: 0;
+        border-radius: 0;
+        border: 1px solid #93b5fb5c;
+    }
+    .search-field img {
+        height: 37px;
+    }
+    footer .img-2 {
+        margin-right: 0;
+        width: 35px;
+        margin-bottom: -20px;
+        margin-left: 0;
     }
 }
 </style>

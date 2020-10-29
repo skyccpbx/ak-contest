@@ -2,12 +2,18 @@
     <v-app>
         <v-main class="works-wrap contag high100">
             <TopNavM class="top-navm" />
-            <v-container class="v-toolbar__content">
-                <v-row class="flex-column my-8" justify="center">
-                    <v-flex class="search-box d-flex justify-center align-start">
+            <header class="item-top hidden-md-and-up top-banner top-banner2 text-center ">
+                <img class="" src="../assets/images/top-mb.jpg" />
+                <div class="slogan-vnum">
+                    <v-img contain src="../assets/images/slogan.png"></v-img>
+                </div>
+            </header>
+            <v-container class="item-container">
+                <v-row class="my-6 item-row" justify="center">
+                    <v-flex class="d-flex justify-center align-start">
                         <h1><img src="../assets/images/vote-tit01.png" /></h1>
                         <v-spacer></v-spacer>
-                        <v-btn class="mt-2" elevation="2" text @click="$router.back(-1)">❮ 返回上一頁</v-btn>
+                        <v-btn class="mt-2 go-back" elevation="2" text @click="$router.back(-1)">❮ 返回上一頁</v-btn>
                     </v-flex>
                     <v-sheet class="mx-auto large-bg" elevation="8" max-width="1360" width="100%">
                         <v-expand-transition>
@@ -30,7 +36,7 @@
                                                 <v-icon left color="red">mdi-cards-heart</v-icon>
                                                 當前票數：{{ counter }}
                                             </v-flex>
-                                            <v-btn class="mt-6 mx-auto" text @click="Start"><img src="@/assets/images/tp-btn.png" /></v-btn>
+                                            <v-btn class="mt-6 mx-auto tp-btn" text @click="Start"><img src="@/assets/images/tp-btn.png" /></v-btn>
                                         </span>
                                         <v-flex align-center justify-center class="d-flex share-line mt-5 ">
                                             分享至：
@@ -186,6 +192,9 @@ body {
         transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
     }
 }
+.go-back span {
+    font-size: 1.2rem;
+}
 .works-wrap {
     .top-navm {
         position: absolute;
@@ -260,6 +269,10 @@ body {
             }
         }
     }
+    .tp-btn {
+        position: relative;
+        right: -6px;
+    }
 }
 @media (max-width: 750px) {
     body,
@@ -275,6 +288,96 @@ body {
         h2 {
             font-size: 16px;
         }
+    }
+
+    .item-top {
+        margin-top: 60px;
+        position: relative;
+        .slogan-vnum {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translatey(-50%);
+            max-width: 80%;
+        }
+    }
+    .group-img .v-image {
+        width: 100%;
+        height: 100% !important;
+        margin-bottom: 20px;
+    }
+    .item-container {
+        h1 {
+            max-width: 130px;
+        }
+        .row {
+            margin: 5px !important;
+        }
+    }
+    .v-application .item-row {
+        margin: 0 -6px !important;
+    }
+    .works-wrap .large-bg {
+        background: url(/img/xl-bg-b4dd0.jpg) no-repeat center center;
+        background-size: cover;
+        border: 3px solid #1c5de0;
+    }
+    .works-wrap .large-bg .text-wrap {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        background: #141414;
+        color: #fff;
+    }
+    .works-wrap .large-bg h2,
+    .works-wrap .large-bg p {
+        color: #fff;
+        padding: 0 12px;
+        margin-bottom: 6px !important;
+        font-size: 14px;
+    }
+    .works-wrap .large-bg h2 {
+        font-size: 16px;
+    }
+    .works-wrap .large-bg .v-slide-group {
+        background: #bdbdbdb5;
+        border-top: 1px solid #fff;
+        padding: 0 !important;
+    }
+    .works-wrap .large-bg .text-wrap h3 {
+        background: #1c5de0;
+        padding: 0.2rem 0.65rem;
+        font-size: 1.1rem;
+    }
+    .works-wrap .large-bg .text-wrap .heart {
+        font-size: 1.25rem;
+        width: 100%;
+        color: #fff;
+        margin-bottom: -10px;
+    }
+    .works-wrap .large-bg .share-line {
+        font-size: 1.2rem;
+        color: #fff;
+        margin-bottom: 20px;
+        margin-top: 10px !important;
+    }
+    .v-slide-group__content .v-card {
+        max-width: 120px !important;
+        margin: 10px 5px !important;
+        .row {
+            margin: 0 !important;
+        }
+    }
+    .v-slide-group__content .v-card img {
+        height: 80px;
+    }
+    .v-slide-group__next,
+    .v-slide-group__prev {
+        align-items: center;
+        display: flex;
+        flex: 0 1 22px;
+        justify-content: center;
+        min-width: 22px;
     }
 }
 </style>

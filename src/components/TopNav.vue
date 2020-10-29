@@ -21,7 +21,7 @@
             <v-menu class="top-menu" offset-y open-on-hover transition="scroll-y-transition">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn class="mr-10" text v-bind="attrs" v-on="on">
-                        活動辦法
+                        作品票選
                     </v-btn>
                 </template>
                 <v-list class="top-bar-list">

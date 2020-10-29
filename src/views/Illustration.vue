@@ -2,7 +2,7 @@
     <div class="contag">
         <TopNavM class="top-navm" />
         <v-main class="about-container">
-            <header class="top-banner">
+            <header class="top-banner hidden-sm-and-down">
                 <img src="../assets/images/top-banner.jpg" />
             </header>
             <v-container class="mt-5 mm-6">
