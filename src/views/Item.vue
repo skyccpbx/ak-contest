@@ -25,11 +25,13 @@
                                             {{ VoteItems.Author }}
                                             登入就送十連抽，還有五星強力幹員等你來拿！登入就送十連抽，還有五星強力幹員等你來拿！
                                         </p>
-                                        <v-flex align-center justify-center class="d-flex heart">
-                                            <v-icon left color="red">mdi-cards-heart</v-icon>
-                                            當前票數：{{ counter }}
-                                        </v-flex>
-                                        <v-btn class="mt-6 mx-auto" text @click="Start"><img src="@/assets/images/tp-btn.png" /></v-btn>
+                                        <span v-if="$route.params.GroupID !== 'amateur'">
+                                            <v-flex align-center justify-center class="d-flex heart">
+                                                <v-icon left color="red">mdi-cards-heart</v-icon>
+                                                當前票數：{{ counter }}
+                                            </v-flex>
+                                            <v-btn class="mt-6 mx-auto" text @click="Start"><img src="@/assets/images/tp-btn.png" /></v-btn>
+                                        </span>
                                         <v-flex align-center justify-center class="d-flex share-line mt-5 ">
                                             分享至：
                                             <v-btn text fab color="#fff"><img src="../assets/images/facebook-ico.png" /></v-btn>
@@ -127,7 +129,7 @@ export default {
                         if (curGroup) {
                             currentGroupTimes = curGroup.times
                         }
-                        for(const g of data.group) {
+                        for (const g of data.group) {
                             totalTiems += g.times
                         }
                     }

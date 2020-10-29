@@ -65,10 +65,8 @@
 
                         <div class="d-flex justify-end align-center searchfield">
                             <p class="mr-12 mt-3 mb-0 ml-0" color="#0049dd">
-                                <span v-if="$route.params.GroupID === 'cosplay'">Cosplay</span>
-                                <span v-else-if="$route.params.GroupID === 'illustration'">插畫</span>
-                                <span v-else-if="$route.params.GroupID === 'amateur'">綜合同好組</span>
-                                -競賽組當前剩餘票數：{{ currentGroupTimes }}
+                                <span v-if="$route.params.GroupID === 'cosplay'">Cosplay -競賽組當前剩餘票數：{{ currentGroupTimes }}</span>
+                                <span v-else-if="$route.params.GroupID === 'illustration'">插畫 -競賽組當前剩餘票數：{{ currentGroupTimes }}</span>
                             </p>
                             <v-text-field type="text" flat solo-inverted hide-details prepend-inner-icon="mdi-magnify" label="輸入檢索編號" class="mt-2" v-model="keyWord" @keyup.enter="SearchBtn()"></v-text-field>
                             <v-btn class="mt-2" elevation="2" text @click="SearchBtn()"><img src="../assets/images/search-ico.png" /></v-btn>
@@ -95,7 +93,7 @@
                                     <v-card-title>
                                         <span class="d-inline-block text-truncate">{{ VoteItems[index].Title }}</span>
                                     </v-card-title>
-                                    <v-card-actions>
+                                    <v-card-actions v-if="$route.params.GroupID !== 'amateur'">
                                         <v-btn icon color="red">
                                             <v-icon>mdi-cards-heart</v-icon>
                                         </v-btn>
