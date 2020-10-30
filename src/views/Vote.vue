@@ -1,7 +1,7 @@
 <template>
     <div class="contag vote-container">
         <TopNavM class="top-navm" />
-        <v-main class="about-container">
+        <v-main class="about-container" :class="`${$route.params.GroupID}-item`">
             <header class="top-banner top-banner2 text-center">
                 <img class="hidden-md-and-up" src="../assets/images/top-mb.jpg" />
                 <img class="hidden-sm-and-down" src="../assets/images/top-banner2.jpg" />
@@ -713,11 +713,29 @@ input:-webkit-autofill {
         margin-bottom: -5px;
         padding: 10px 10px 0;
     }
+    .about-container.amateur-item .vote-item .card-bg .v-card__title {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 0.9rem;
+        word-break: break-all;
+        margin-bottom: 0px !important;
+        padding: 7px 10px !important;
+    }
     .about-container .search-box .searchfield {
         width: 100%;
         text-align: left;
         align-items: flex-end !important;
         margin-top: -40px;
+    }
+    .about-container.amateur-item .search-box .searchfield {
+        width: 100%;
+        text-align: left;
+        align-items: flex-end !important;
+        margin-top: -30px !important;
     }
     .about-container .search-box .v-input__control {
         min-height: 35px;

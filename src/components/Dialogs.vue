@@ -62,6 +62,9 @@ export default {
 </script>
 
 <style lang="scss">
+.v-dialog__content {
+    z-index: 999 !important;
+}
 .dialog-card {
     background: url(../assets/images/dialog-bg.png) no-repeat center center;
     background-size: cover;
