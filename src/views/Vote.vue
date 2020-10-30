@@ -172,6 +172,7 @@ export default {
         currentUser: '',
         total: 0,
         totalTimes: 0,
+        accessToken: ''
     }),
     async created() {
         for (let i = 0; i < 99; i++) {
@@ -195,6 +196,7 @@ export default {
         console.log(this.$store.state.baseUrl, 'store baseurl')
         const self = this
 
+        this.accessToken = this.$store.state.accessToken;
         if(this.accessToken) {
            await this.getUserLogs()
         }
