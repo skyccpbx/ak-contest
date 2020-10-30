@@ -349,7 +349,7 @@ export default {
             }
         },
         async getUserLogs() {
-            if (!this.currentUser) {
+            if (!this.accessToken) {
                 return
             }
             const url = this.$store.state.baseUrl + '/api/vote/v2/mrfz_cosplay/userlogs?accessToken=' + this.accessToken
