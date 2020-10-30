@@ -355,10 +355,14 @@ export default {
                     }
                     if (userdata && userdata.email) {
                         this.currentUserEmail = userdata.email
-                        console.log(this.currentUserEmail)
                     }
                     for (const g of data.group) {
                         this.totalTimes += g.times
+                    }
+                    for(const item of this.VoteItems) {
+                        if(data.logs.find(p => p.groupid == item.GroupId && p.itemid == item.Id)){
+                            item.isvoted = true;
+                        }
                     }
                 }
                 console.log(data)
