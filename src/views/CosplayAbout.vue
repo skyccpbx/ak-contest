@@ -318,6 +318,7 @@ export default {
             line-height: 1.3rem;
             letter-spacing: 0em !important;
             font-family: 'Roboto', sans-serif !important;
+            margin-bottom: 15px !important;
         }
         .jlzu-pc {
             display: none;

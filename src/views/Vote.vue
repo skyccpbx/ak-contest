@@ -503,6 +503,7 @@ input:-webkit-autofill {
             width: auto !important;
             height: auto !important;
         }
+
         .card-bg {
             background: url(../assets/images/vote-item-bottom.png) no-repeat center center;
             background-size: cover;
@@ -632,6 +633,9 @@ input:-webkit-autofill {
         font-size: 2vh;
     }
     .vote-container {
+        .ff-btn {
+            top: 8px;
+        }
         .top-breadcrumbs a {
             color: #fff;
             font-size: 1rem;
@@ -649,6 +653,7 @@ input:-webkit-autofill {
         .search-box {
             margin-top: -10px;
             margin-bottom: 10px;
+            padding: 0 2px;
         }
         .row {
             margin: 0 -2px;
@@ -712,7 +717,7 @@ input:-webkit-autofill {
         width: 100%;
         text-align: left;
         align-items: flex-end !important;
-        margin-top: -47px;
+        margin-top: -40px;
     }
     .about-container .search-box .v-input__control {
         min-height: 35px;

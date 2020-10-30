@@ -134,5 +134,18 @@ export default {
     .v-dialog .v-responsive__content {
         max-width: 250px;
     }
+    .v-dialog > .v-card > .v-card__title {
+        font-size: 1.25rem;
+        font-weight: 500;
+        letter-spacing: 0.0125em;
+        padding: 16px 0 0;
+    }
+    .dialog-card .v-input input {
+        color: #000 !important;
+        text-align: center;
+        max-height: 100%;
+        font-size: 1rem;
+        height: 32px;
+    }
 }
 </style>

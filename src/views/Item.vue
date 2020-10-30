@@ -195,6 +195,9 @@ body {
 .go-back span {
     font-size: 1.2rem;
 }
+.v-snack__content p {
+    color: #fff !important;
+}
 .works-wrap {
     .top-navm {
         position: absolute;
@@ -296,7 +299,7 @@ body {
         .slogan-vnum {
             position: absolute;
             left: 50%;
-            top: 50%;
+            top: 45%;
             transform: translateX(-50%) translatey(-50%);
             max-width: 80%;
         }
@@ -304,7 +307,7 @@ body {
     .group-img .v-image {
         width: 100%;
         height: 100% !important;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     .item-container {
         h1 {
@@ -336,6 +339,8 @@ body {
     }
     .works-wrap .large-bg h2 {
         font-size: 16px;
+        margin-top: 10px !important;
+        margin-bottom: 1px !important;
     }
     .works-wrap .large-bg .v-slide-group {
         background: #bdbdbdb5;
@@ -345,19 +350,19 @@ body {
     .works-wrap .large-bg .text-wrap h3 {
         background: #1c5de0;
         padding: 0.2rem 0.65rem;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     .works-wrap .large-bg .text-wrap .heart {
-        font-size: 1.25rem;
+        font-size: 1rem;
         width: 100%;
         color: #fff;
         margin-bottom: -10px;
     }
     .works-wrap .large-bg .share-line {
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: #fff;
-        margin-bottom: 20px;
-        margin-top: 10px !important;
+        margin-bottom: 10px;
+        margin-top: 3px !important;
     }
     .v-slide-group__content .v-card {
         max-width: 120px !important;
@@ -376,6 +381,25 @@ body {
         flex: 0 1 22px;
         justify-content: center;
         min-width: 22px;
+    }
+    .go-back span {
+        font-size: 1rem;
+        letter-spacing: 0;
+    }
+    .works-wrap .large-bg .text-wrap .v-btn {
+        height: auto;
+        display: block;
+        max-width: 220px;
+    }
+    .works-wrap .large-bg .share-line img {
+        max-width: 40px;
+        height: 40px;
+        background: #fff;
+        border-radius: 50%;
+    }
+    .works-wrap .large-bg .share-line .v-btn--fab.v-size--default {
+        height: 50px;
+        width: 50px;
     }
 }
 </style>
