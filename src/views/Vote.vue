@@ -383,6 +383,9 @@ input:-webkit-autofill {
         padding: 0 16px;
     }
 }
+.amateur-item .search-box {
+    width: 100%;
+}
 .v-snack__wrapper.theme--dark {
     background-color: #333333;
     color: rgba(255, 255, 255, 1);
