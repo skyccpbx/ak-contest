@@ -110,7 +110,7 @@
 
                                         <v-spacer></v-spacer>
 
-                                        <vue-star class="px-3 like-btn elevation-24" animate="animate__animated animate__bounceIn" color="#ff3b3b">
+                                        <vue-star class="px-3 like-btn elevation-24" animate="animate__animated animate__bounceIn" :class="{ starColor: VoteItems[index].isvoted }">
                                             <v-btn class="v-btn v-btn--flat star-btn" slot="icon" @click="Start(VoteItems[index].Id)">
                                                 <v-icon text left class="mr-2">mdi-thumb-up</v-icon>
                                                 Like
@@ -172,7 +172,7 @@ export default {
         currentUser: '',
         total: 0,
         totalTimes: 0,
-        accessToken: ''
+        accessToken: '',
     }),
     async created() {
         for (let i = 0; i < 99; i++) {
@@ -196,9 +196,9 @@ export default {
         console.log(this.$store.state.baseUrl, 'store baseurl')
         const self = this
 
-        this.accessToken = this.$store.state.accessToken;
-        if(this.accessToken) {
-           await this.getUserLogs()
+        this.accessToken = this.$store.state.accessToken
+        if (this.accessToken) {
+            await this.getUserLogs()
         }
 
         window.fbAsyncInit = function() {
@@ -302,7 +302,7 @@ export default {
                 .then(ret => {
                     const { data } = ret
                     if (data) {
-                        currentVoteItem.isvoted = true;
+                        currentVoteItem.isvoted = true
                         const curGroup = data.group.find(p => p.id == this.router_groupID)
                         if (curGroup) {
                             this.currentGroupTimes = curGroup.times
@@ -366,9 +366,9 @@ export default {
                     for (const g of data.group) {
                         this.totalTimes += g.times
                     }
-                    for(const item of this.VoteItems) {
-                        if(data.logs.find(p => p.groupid == item.GroupId && p.itemid == item.Id)){
-                            item.isvoted = true;
+                    for (const item of this.VoteItems) {
+                        if (data.logs.find(p => p.groupid == item.GroupId && p.itemid == item.Id)) {
+                            item.isvoted = true
                         }
                     }
                 }
@@ -393,6 +393,9 @@ input:-webkit-autofill {
         min-width: 64px;
         padding: 0 16px;
     }
+}
+.starColor {
+    color: #ff3b3b;
 }
 .amateur-item .search-box {
     width: 100%;
