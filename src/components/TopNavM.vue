@@ -8,7 +8,7 @@
             <v-list class="top-bar-list menu-mlist">
                 <v-list-group>
                     <template v-slot:activator>
-                        <v-list-item-title class="mr-n16">活動辦法</v-list-item-title>
+                        <v-list-item-title class="mr-n12">活動辦法</v-list-item-title>
                     </template>
                     <v-list-item router-link to="/illustration">
                         <span>同人二創比賽</span>
@@ -19,7 +19,7 @@
                 </v-list-group>
                 <v-list-group>
                     <template v-slot:activator>
-                        <v-list-item-title class="mr-n16">作品票選</v-list-item-title>
+                        <v-list-item-title class="mr-n12">作品票選</v-list-item-title>
                     </template>
 
                     <v-list-item router-link to="/cosplay/vote">

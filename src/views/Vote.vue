@@ -123,7 +123,7 @@
                     </v-row>
                     <div class="footer-loading">
                         <v-btn block color="secondary" :loading="loading" @click="nextPage()">
-                            什么也没有了！@ ！@
+                            什麼也沒有了！@ ！@
                         </v-btn>
                     </div>
 

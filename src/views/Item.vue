@@ -318,8 +318,6 @@ body {
         margin: 0 -6px !important;
     }
     .works-wrap .large-bg {
-        background: url(/img/xl-bg-b4dd0.jpg) no-repeat center center;
-        background-size: cover;
         border: 3px solid #1c5de0;
     }
     .works-wrap .large-bg .text-wrap {
@@ -334,7 +332,7 @@ body {
         color: #fff;
         padding: 0 12px;
         margin-bottom: 6px !important;
-        font-size: 14px;
+        font-size: 12px;
     }
     .works-wrap .large-bg h2 {
         font-size: 16px;

@@ -47,7 +47,7 @@ export default {
             const postData = { email: this.email }
             try {
                 await api.post(url, postData)
-                this.$root.$data.currentUserEmail = email;
+                this.$root.$data.currentUserEmail = email
             } catch (err) {
                 console.log(err)
             } finally {
@@ -129,5 +129,10 @@ export default {
 .theme--dark.v-card > .v-card__text,
 .theme--dark.v-card .v-card__subtitle {
     color: #fff;
+}
+@media (max-width: 750px) {
+    .v-dialog .v-responsive__content {
+        max-width: 250px;
+    }
 }
 </style>

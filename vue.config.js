@@ -1,7 +1,7 @@
 const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
-    //publicPath: process.env.NODE_ENV === 'production' ? 'https://ak.txwy.tw/artcombat_demo/' : '',
+    publicPath: process.env.NODE_ENV === 'production' ? 'https://ak.txwy.tw/artcombat_demo/' : '',
     transpileDependencies: ['vuetify'],
     productionSourceMap: false,
     lintOnSave: false,
