@@ -195,6 +195,10 @@ export default {
         console.log(this.$store.state.baseUrl, 'store baseurl')
         const self = this
 
+        if(this.accessToken) {
+           await this.getUserLogs()
+        }
+
         window.fbAsyncInit = function() {
             FB.init({
                 appId: '1452974251501275',
@@ -296,6 +300,7 @@ export default {
                 .then(ret => {
                     const { data } = ret
                     if (data) {
+                        currentVoteItem.isvoted = true;
                         const curGroup = data.group.find(p => p.id == this.router_groupID)
                         if (curGroup) {
                             this.currentGroupTimes = curGroup.times
