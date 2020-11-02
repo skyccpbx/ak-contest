@@ -5,7 +5,7 @@ module.exports = {
     transpileDependencies: ['vuetify'],
     productionSourceMap: false,
     lintOnSave: false,
-    outputDir: '/Users/txwy/Documents/wwwweb/static.txwy.tw/ak/artcombat_demo/',
+    outputDir: '/Users/txwy/Documents/wwwweb/static.txwy.tw/ak/artcombat_demo/', //打包后静态页，存放目录
 
     configureWebpack: config => {
         config.module
