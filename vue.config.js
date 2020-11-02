@@ -1,7 +1,7 @@
 const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? 'https://ak.txwy.tw/artcombat_demo/' : '',
+    publicPath: '/artcombat_demo/', //页面目录为站点子目录时启用文件夹目录
     transpileDependencies: ['vuetify'],
     productionSourceMap: false,
     lintOnSave: false,
