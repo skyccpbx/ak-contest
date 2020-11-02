@@ -9,13 +9,13 @@ module.exports = {
 
     configureWebpack: config => {
         config.module
-        if (process.env.NODE_ENV === 'production' ? './' : '') {
+        if (process.env.NODE_ENV === 'production') {
             return {
                 plugins: [
                     new CompressionPlugin({
                         filename: '[path].gz[query]',
                         algorithm: 'gzip',
-                        test: /\.(js|css|html|svg)$/, // 匹配文件名
+                        test: /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i, // 匹配文件名
                         threshold: 10240, // 对超过10k的数据压缩
                         deleteOriginalAssets: false, // 不删除源文件
                         minRatio: 0.8, // 压缩比
