@@ -95,23 +95,23 @@
                     </v-flex>
                     <v-row class="mb-6 vote-item">
                         <v-col class="col-lg-3 col-md-4 col-6 col-vote-m transition-swing" v-for="(item, index) in VoteItems" :key="index">
-                            <v-card class="mx-auto" max-width="344" v-if="VoteItems[index].ImgList">
-                                <span class="item-num">NO: {{ VoteItems[index].Id }}</span>
-                                <router-link :to="`/${$route.params.GroupID}/vote/${VoteItems[index].Id}`"><v-img class="thum-img" :src="VoteItems[index].ImgList.ThumImg[0]" height="200" /></router-link>
+                            <v-card class="mx-auto" max-width="344" v-if="item.ImgList">
+                                <span class="item-num">NO: {{ item.Id }}</span>
+                                <router-link :to="`/${$route.params.GroupID}/vote/${item.Id}`"><v-img class="thum-img" :src="item.ImgList.ThumImg[0]" height="200" /></router-link>
                                 <div class="card-bg">
                                     <v-card-title>
-                                        <span class="d-inline-block text-truncate">{{ VoteItems[index].Title }}</span>
+                                        <span class="d-inline-block text-truncate">{{ item.Title }}</span>
                                     </v-card-title>
                                     <v-card-actions v-if="$route.params.GroupID !== 'amateur'">
                                         <v-btn icon color="red">
                                             <v-icon>mdi-cards-heart</v-icon>
                                         </v-btn>
-                                        <span class="text-md-body-1">{{ VoteItems[index].count || 0 }}</span>
+                                        <span class="text-md-body-1">{{ item.count || 0 }}</span>
 
                                         <v-spacer></v-spacer>
 
-                                        <vue-star class="px-3 like-btn elevation-24" animate="animate__animated animate__bounceIn" :class="{ starColor: VoteItems[index].isvoted }">
-                                            <v-btn class="v-btn v-btn--flat star-btn" slot="icon" @click="Start(VoteItems[index].Id)">
+                                        <vue-star class="px-3 like-btn elevation-24" animate="animate__animated animate__bounceIn" :class="{ starColor: item.isvoted }">
+                                            <v-btn class="v-btn v-btn--flat star-btn" slot="icon" @click="Start(item.Id)">
                                                 <v-icon text left class="mr-2">mdi-thumb-up</v-icon>
                                                 Like
                                             </v-btn>
