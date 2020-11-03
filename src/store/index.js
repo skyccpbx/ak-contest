@@ -4,18 +4,18 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state: {
-    accessToken: '',
-    currentUser: '',
-    baseUrl: 'https://xdg.com'
-  },
-  mutations: {
-    setToken (state, accessToken) {
-      state.accessToken = accessToken;
+    state: {
+        accessToken: '',
+        currentUser: '',
+        baseUrl: 'https://xdg.com',
     },
-    setUser (state, user) {
-      state.currentUser = user;
-    }
-  }
+    mutations: {
+        setToken(state, accessToken) {
+            state.accessToken = accessToken
+        },
+        setUser(state, user) {
+            state.currentUser = user
+        },
+    },
 })
 export { store }

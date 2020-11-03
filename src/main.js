@@ -3,12 +3,10 @@ import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify'
 import VueClipboard from 'vue-clipboard2'
-
+import { store } from '@/store'
 
 Vue.config.productionTip = false
 Vue.use(VueClipboard)
-
-import { store } from '@/store'
 
 new Vue({
     router,
