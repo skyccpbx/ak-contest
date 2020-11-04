@@ -27,9 +27,7 @@
                                         </h3>
                                         <h2 class="my-5">{{ VoteItems.Title }}</h2>
                                         <p class="mb-10">
-                                            {{ $route.params.GroupID }}
                                             {{ VoteItems.Author }}
-                                            登入就送十連抽，還有五星強力幹員等你來拿！登入就送十連抽，還有五星強力幹員等你來拿！
                                         </p>
                                         <span v-if="$route.params.GroupID !== 'amateur'">
                                             <v-flex align-center justify-center class="d-flex heart">
