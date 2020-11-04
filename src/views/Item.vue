@@ -179,7 +179,8 @@ export default {
             return false
         },
         lineShare() {
-            console.log(this.BASE_URL)
+            window.open(`http://line.naver.jp/R/msg/text/?邀請大家來投票！參與投票就有機會抽到「遊戲周邊」，每日投票獲獎機率越高！${encodeURIComponent(location.href)}'`)
+            return false
         },
     },
 }
