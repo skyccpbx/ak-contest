@@ -175,7 +175,7 @@ export default {
             }
         },
         fbShare() {
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}`, 'window', 'width=650, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}`, 'window', 'width=550, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
             return false
         },
         lineShare() {
