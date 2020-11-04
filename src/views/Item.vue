@@ -175,11 +175,8 @@ export default {
             }
         },
         fbShare() {
-            // window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}`, 'window', 'width=650, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
-            // return false
-
-            var url = 'https://www.facebook.com/dialog/share?app_id=1516121445223682&display=popup&href=' + encodeURIComponent(location.href) + '&redirect_uri=' + encodeURIComponent(location.href)
-            window.open(url)
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}`, 'window', 'width=650, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
+            return false
         },
         lineShare() {
             console.log(this.BASE_URL)
