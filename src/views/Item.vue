@@ -98,6 +98,7 @@ export default {
         snackbar: false,
         ErrText: '',
         dialog: 'false',
+        share_url: '',
     }),
     created() {
         this.getVoteItems()
@@ -110,8 +111,8 @@ export default {
             this.VoteItems = GroupData[voteId - 1]
             this.imgSrc = this.VoteItems.ImgList.LargeImg[0]
             //console.log(this.imgSrc)
-
             this.getVoteLogs()
+            this.share_url = `https://xdg.com/api/commonshare/?gameid=ak&id=${this.VoteItems.Id}&groupid=${this.$route.params.GroupID}&author=${encodeURIComponent(this.VoteItems.Author)}&title=${encodeURIComponent(this.VoteItems.Title)}&pic=${encodeURIComponent(this.VoteItems.ImgList.ThumImg[0])}`
         },
         Start() {
             const voteId = this.$route.params.id
@@ -159,6 +160,7 @@ export default {
             this.imgSrc = imgSrc
             //console.log(imgSrc)
         },
+
         async getVoteLogs() {
             try {
                 const voteId = this.$route.params.id
@@ -173,11 +175,11 @@ export default {
             }
         },
         fbShare() {
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}`, 'window', 'width=550, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.share_url)}`, 'window', 'width=550, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
             return false
         },
         lineShare() {
-            window.open(`http://line.naver.jp/R/msg/text/?邀請大家來投票！參與投票就有機會抽到「遊戲周邊」，每日投票獲獎機率越高！${encodeURIComponent(location.href)}'`)
+            window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(this.share_url)}`, 'window', 'width=550, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
             return false
         },
     },
