@@ -139,7 +139,7 @@ export default {
                         }
                     }
                     this.counter++
-                    if (totalTiems <= 0 && !this.currentUserEmail) {
+                    if (data.logs.length == 8 && !this.currentUserEmail) {
                         this.$refs.Dialogs.OpenDialog()
                     }
                 })

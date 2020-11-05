@@ -313,7 +313,7 @@ export default {
                     }
                     this.total++
                     currentVoteItem.count++
-                    if (this.totalTimes <= 0 && !this.currentUserEmail) {
+                    if (data.logs.length == 8 && !this.currentUserEmail) {
                         this.$refs.Dialogs.OpenDialog()
                     }
                 })
