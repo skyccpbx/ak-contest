@@ -13,7 +13,7 @@
                     <v-flex class="d-flex justify-center align-start">
                         <h1><img src="../assets/images/vote-tit01.png" /></h1>
                         <v-spacer></v-spacer>
-                        <v-btn class="mt-2 go-back" elevation="2" text @click="$router.back(-1)">❮ 返回上一頁</v-btn>
+                        <v-btn class="mt-2 go-back" elevation="2" text @click="back()">❮ 返回上一頁</v-btn>
                     </v-flex>
                     <v-sheet class="mx-auto large-bg" elevation="8" max-width="1360" width="100%">
                         <v-expand-transition>
@@ -181,6 +181,14 @@ export default {
         lineShare() {
             window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(this.share_url)}`, 'window', 'width=550, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
             return false
+        },
+        back() {
+            if (window.history.length <= 1) {
+                this.$router.push({ path: '/' })
+                return false
+            } else {
+                this.$router.go(-1)
+            }
         },
     },
 }
