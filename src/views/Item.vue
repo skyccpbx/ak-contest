@@ -179,8 +179,9 @@ export default {
             return false
         },
         lineShare() {
-            window.open(`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(this.share_url)}`, 'window', 'width=550, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
+            window.open(`http://line.naver.jp/R/msg/text/?${this.VoteItems.Title}，編號【${this.VoteItems.Id}】，邀請大家來投票！參與投票就有機會抽到「遊戲周邊」，每日投票獲獎機率越高！${location.href}`, 'window', 'width=550, height=550,personalbar=0,toolbar=0,scrollbars=1,resizable=1')
             return false
+            // console.log(`http://line.naver.jp/R/msg/text/?${this.VoteItems.Title}，編號【${this.VoteItems.Id}】，邀請大家來投票！參與投票就有機會抽到「遊戲周邊」，每日投票獲獎機率越高！${location.href}`)
         },
         back() {
             if (window.history.length <= 1) {
