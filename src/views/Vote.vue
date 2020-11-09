@@ -44,7 +44,7 @@
                         <a class="v-breadcrumbs__item">
                             對自己喜愛的作品點下
                             <v-icon class="mx-2" color="red">
-                                mdi-cards-heart
+                                mdi-thumb-up
                             </v-icon>
                             進行投票
                         </a>
