@@ -321,9 +321,6 @@ export default {
                     if (ret.code == 10001) {
                         this.ErrText = '您今天已經投過票了!'
                         this.snackbar = true
-                        if (this.totalTimes <= 0 && !this.currentUserEmail) {
-                            this.$refs.Dialogs.OpenDialog()
-                        }
                         return
                     }
                     if (ret.code == 10000 && !this.currentUserEmail) {
